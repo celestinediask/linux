@@ -1,0 +1,17 @@
+cd -
+cd ~/
+ls -a
+ls -lh
+pwd
+touch
+mkdir
+rm
+rmdir
+rm -r
+history
+head
+tail
+more
+less
+wget
+ping
