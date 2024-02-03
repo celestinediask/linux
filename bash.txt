@@ -1,17 +1,17 @@
-cd -
-cd ~/
-ls -a
-ls -lh
-pwd
-touch
-mkdir
-rm
-rmdir
-rm -r
-history
-head
-tail
-more
-less
-wget
-ping
+cd - previous directory
+cd ~/  home directory
+ls -a list including hidden file
+ls -lh list   
+pwd  print working directory
+touch create file 
+mkdir  create directory
+rm remove file
+rmdir remove empty directory 
+rm -r remove directory including files
+history command history
+head read begining of file 
+tail read end of file  
+more 
+less 
+wget download manager
+ping check internet in computer
