@@ -13,5 +13,6 @@ head read begining of file
 tail read end of file  
 more 
 less 
-wget download manager
-ping check internet in computer
+wget https://example/file //download manager
+ping example.com //check internet in computer
+du -sh boo //file size
