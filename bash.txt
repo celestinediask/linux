@@ -1,13 +1,23 @@
-cd - previous directory
+common bash command usage
+-------------------------
+
+cd     home directory
+cd .   current directory
+cd ..  parent directory
+cd -   previous directory
 cd ~/  home directory
+
+ls
 ls -a list including hidden file
-ls -lh list   
+ls -lh list with details
+ls -1 list verticaly
+
 pwd  print working directory
 touch create file 
-mkdir  create directory
+mkdir create directory
 rm remove file
-rmdir remove empty directory 
 rm -r remove directory including files
+rmdir remove empty directory 
 history command history
 head read begining of file 
 tail read end of file  
