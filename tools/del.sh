@@ -34,7 +34,7 @@ show_help() {
   echo -e "\n     ${bold}REPORTING BUGS${plain}"
   echo -e "\n         Link:example.com"
   echo -e "\n     ${bold}COPYRIGHT${plain}"
-  echo -e "\n         Copyright @astorscott\n"
+  echo -e "\n         Copyright @celestinediask\n"
 }
 
 del_file() {
