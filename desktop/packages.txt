@@ -1,0 +1,8 @@
+tldr
+neovim
+btop
+tre
+batcat
+fzf
+neofetch
+mpv
