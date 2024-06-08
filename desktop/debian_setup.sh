@@ -4,43 +4,31 @@ sudo test
 
 set -e
 
-pause='sleep 2'
+comment_out_deb_src() {
+    # Check if backup file already exists
+    if grep -qE '^\s*#.*deb-src' /etc/apt/sources.list; then
+        echo "Already deb-src lines have been commented out in /etc/apt/sources.list."
+        return
+    fi
 
-# adjusting font size
-echo && echo -n "adjusting font size..." && $pause && echo
-# sudo dpkg-reconfigure console-setup
-# terminua bold
-# 16x32
+    # Backup the original sources.list file
+    cp -i /etc/apt/sources.list /etc/apt/sources.list.bak
 
-# clean repo
-echo && echo -n "cleaning repos..." && $pause
-sudo cp -n /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo sed -i '/^deb /!d' /etc/apt/sources.list
+    # Comment out all deb-src lines
+    sed -i 's/^\(deb-src.*\)$/#\1/' /etc/apt/sources.list
 
-# update system
-echo -e "\n" && echo -n "updating system..." && $pause && echo
-sudo apt-get update
+    echo "All deb-src lines have been commented out in /etc/apt/sources.list."
+}
 
-# upgrade system
-echo && echo -n "upgrading system..." && $pause && echo
-sudo apt-get upgrade
+disable_grub_timeout() {
+    echo "disabling grub timeout..."
+    sudo cp -n /etc/default/grub /etc/default/grub.bak
+    sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
 
-# set brightness
-echo && echo -n "setting brightness to 5% ..." && $pause && echo
-sudo apt-get install brightnessctl -y
-brightnessctl set 5%
+    # update grub
+    echo "updating grub..."
+    sudo update-grub
+}
 
-# disable grub timeout
-echo && echo -n "disabling grub timeout..." && $pause
-sudo cp -n /etc/default/grub /etc/default/grub.bak
-sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
-
-# update grub
-echo -e "\n" && echo -n "updating grub..." && $pause && echo
-sudo update-grub
-
-# install vim
-echo -e "\n" && echo -n "installing vim..." && $pause && echo
-sudo apt-get install vim -y
-
-echo -e "\nAll done!"
+comment_out_deb_src
+#disable_grub_timeout

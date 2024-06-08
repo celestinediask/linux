@@ -1,6 +1,7 @@
 tldr
 neovim
 btop
+htop
 tre
 batcat
 fzf
