@@ -1,9 +1,9 @@
 tldr
 neovim
-btop
+#btop
 htop
 tre
 batcat
-fzf
-neofetch
+#fzf
+#neofetch
 mpv
