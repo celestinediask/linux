@@ -1,4 +1,4 @@
-# Common Linux Terminal Usage
+# Common Linux Command Usage
 
 ### Change Directory
 `cd`  home directory  

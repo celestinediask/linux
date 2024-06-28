@@ -32,8 +32,3 @@ disable_grub_timeout() {
 
 comment_out_deb_src
 #disable_grub_timeout
-
-# testing ssh push
-# just some words
-# again some words
-# blah blah blah
