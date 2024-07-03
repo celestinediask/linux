@@ -1,8 +1,8 @@
-#! bin/bash
-
-sudo test
+#! bin/sh
 
 set -e
+
+# Check if this script running as root or with sudo
 
 comment_out_deb_src() {
     # Check if backup file already exists
