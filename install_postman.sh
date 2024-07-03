@@ -42,7 +42,7 @@ fi
 if [ -f "/tmp/postman-linux-x64.tar.gz" ]; then
     sudo rm /tmp/postman-linux-x64.tar.gz
     echo "File /tmp/postman-linux-x64.tar.gz removed."
-else
+fi
 
 # Download Postman tarball to temp storage
 echo "Downloading Postman..."
