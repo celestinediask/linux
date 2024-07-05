@@ -1,43 +1,29 @@
-#!/bin/bash
+set -e
 
-get_firefox_url() {
-    local url=$(curl -s 'https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US' | grep -oP 'https://[^"]+')
-    echo "$url"
-}
+url="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
 
-download_firefox() {
-    local url=$1
-    wget "$url"
-}
-
-install_firefox() {
-    tar -xjf firefox.tar.bz2
-    tar xjf firefox-*.tar.bz2
-    sudo mv -i firefox /opt/
-    sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
-    sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
-}
-
-main() {
-    local firefox_url=$(get_firefox_url)
-    if [ -z "$firefox_url" ]; then
-        echo "Failed to fetch Firefox download URL."
-        exit 1
+# Check if running with root privilage
+if [ "$(id -u)" != "0" ]; then
+    if ! sudo -n true 2>/dev/null; then
+        echo "This script requires root privileges to execute."
     fi
+    
+    sudo sh "$0" "$@"
+    exit $?
+fi
 
-    download_firefox "$firefox_url"
-    if [ $? -ne 0 ]; then
-        echo "Failed to download Firefox."
-        exit 1
-    fi
+wget -O /tmp/firefox.tar.bz $url
 
-    install_firefox
-    if [ $? -ne 0 ]; then
-        echo "Failed to install Firefox."
-        exit 1
-    fi
+sudo tar -xjf /tmp/firefox.tar.bz -C /opt
 
-    echo "Firefox installation completed successfully."
-}
+sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
 
-main
+sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+
+# Verify installation
+echo "Verifying installation..."
+if command -v firefox --version >/dev/null 2>&1; then
+    echo "firefox is installed successfully."
+else
+    echo "firefox installation failed."
+fi
