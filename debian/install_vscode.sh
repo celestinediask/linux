@@ -18,6 +18,6 @@ if [ "$(id -u)" != "0" ]; then
     exit $?
 fi
 
-wget -P /tmp/code-insiders.deb "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
+wget -O /tmp/code-insiders.deb "https://code.visualstudio.com/sha/download?build=insider&os=linux-deb-x64"
 
 sudo apt install /tmp/code-insiders.deb
