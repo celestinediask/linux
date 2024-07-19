@@ -1,6 +1,14 @@
 #! /bin/bash
 
+# tested on debian-12.6-gnome-core
+
 set -e
+
+# Check if OS is Debian-based
+if ! grep -q "^ID=debian" /etc/os-release; then
+    echo "This script is intended for Debian-based distributions only. Exiting."
+    exit 1
+fi
 
 # Check if running with root privilage
 if [ "$(id -u)" != "0" ]; then

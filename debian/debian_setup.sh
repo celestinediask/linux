@@ -2,7 +2,22 @@
 
 set -e
 
-# Check if this script running as root or with sudo
+# Check if OS is Debian-based
+if ! grep -q "^ID=debian" /etc/os-release; then
+    echo "This script is intended for Debian-based distributions only. Exiting."
+    exit 1
+fi
+
+# Check if running with root privilage
+if [ "$(id -u)" != "0" ]; then
+    if ! sudo -n true 2>/dev/null; then
+        echo "This script requires root privileges to execute."
+    fi
+    
+    sudo sh "$0" "$@"
+    exit $?
+fi
+
 
 comment_out_deb_src() {
     # Check if backup file already exists
