@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo test
+#check if running as root
 
 # Create directory for APT repository keys if it doesn't exist
 sudo install -d -m 0755 /etc/apt/keyrings
@@ -22,4 +22,4 @@ Pin: origin packages.mozilla.org
 Pin-Priority: 1000
 ' | sudo tee /etc/apt/preferences.d/mozilla
 
-echo "update apt to install firefox package"
+echo "firefox repo added"
