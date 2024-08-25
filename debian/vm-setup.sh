@@ -1,20 +1,3 @@
-# Initial setup for QEMU/KVM debian VM
-
-# enable host to guest copy & paste feature (reboot required)
-enable_copy_paste_feature() {
-	sudo apt install spice-vdagent
-	sudo systemctl start spice-vdagent
-}
-
-
-disable_automatic_screenlock() {
-	gsettings set org.gnome.desktop.screensaver lock-enabled false
-}
-
-disable_automatic_screen_blank() {
-	gsettings set org.gnome.desktop.session idle-delay 0
-}
-
 # Function to enable autologin for current user in GDM
 enable_autologin() {
     # Get current username
@@ -32,9 +15,6 @@ enable_autologin() {
 
 main() {
 	enable_autologin
-	enable_copy_paste_feature
-	disable_automatic_screenlock
-#	disable_automatic_screen_blank
 }
 
 main
