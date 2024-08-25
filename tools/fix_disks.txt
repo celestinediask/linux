@@ -1,8 +1,0 @@
-#fix #disk #usb #harddisk #ssd
-
-# this will fix read only usbs
-mount -w /dev/<device> mnt/ (mount as rw)
-hdparm -r0 /dev/<device> (turn off write protection)
-
-# zero out harddisk (dangerous command)
-sudo dd if=/dev/zero of=/dev/disk-by-id/<device> status=progress
