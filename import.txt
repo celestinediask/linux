@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Loop through each file found in the current directory and its subdirectories
+find . -type f -name '*.sh' | while read -r file; do
+    # Source the file
+    source "$file"
+done
+
