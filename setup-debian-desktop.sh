@@ -2,6 +2,8 @@
 
 set -e
 
+USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+
 # nautilus items count show
 # gnome-text-editor disable restore
 # chrome
@@ -21,7 +23,7 @@ sudo apt install dbus-x11
 gnome_settings_host
 
 # import config
-cp -i ~/.config/vimrc ~/.vimrc
+cp -i ./config/vimrc $USER_HOME/.vimrc
 
 # install packages
-sudo apt install vim mpv eog gnome-text-editor gnome-disk-utility gnome-system-monitor nautilus
+#sudo apt install vim mpv eog gnome-text-editor gnome-disk-utility gnome-system-monitor nautilus
