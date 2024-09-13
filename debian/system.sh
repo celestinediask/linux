@@ -44,6 +44,13 @@ update_system() {
 
 fix_wifi() {
 	echo "fixing wifi..."
+
+	# Check if the /etc/network/interfaces file exists
+    if [ ! -f /etc/network/interfaces ]; then
+        echo "/etc/network/interfaces does not exist. Exiting function."
+        return
+    fi
+
 	sudo mv -i /etc/network/interfaces ~/interfaces.bak
 	sudo systemctl restart wpa_supplicant.service
 	sudo systemctl restart NetworkManager
