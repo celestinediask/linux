@@ -36,18 +36,12 @@ comment_out_deb_src() {
     echo "All deb-src lines have been commented out in /etc/apt/sources.list."
 }
 
-update_system() {
-	echo "updating and upgrading system..."
-	sudo apt update
-	sudo apt upgrade
-}
-
 fix_wifi() {
 	echo "fixing wifi..."
 
 	# Check if the /etc/network/interfaces file exists
     if [ ! -f /etc/network/interfaces ]; then
-        echo "/etc/network/interfaces does not exist. Exiting function."
+        echo "/etc/network/interfaces does not exist. skipping wifi fix."
         return
     fi
 
