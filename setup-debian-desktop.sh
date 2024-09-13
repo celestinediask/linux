@@ -4,13 +4,11 @@ set -e
 
 # nautilus items count show
 # gnome-text-editor disable restore
+# chrome
+# firefox
 
-# Loop through each file found in the current directory and its subdirectories
-find . -type f -name '*.sh' | while read -r file; do
-    # Source the file
-    source "$file"
-done
-
+source ./debian/system.sh
+source ./gnome.sh
 
 check_os
 check_root
@@ -26,7 +24,7 @@ sudo apt install vim mpv eog gnome-text-editor gnome-disk-utility gnome-system-m
 # firefox
 
 # import config
-cp -i config/vimrc ~/
+cp -i config/* ~/config
 
 
 
