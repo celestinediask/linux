@@ -1,0 +1,18 @@
+File naming format
+
+no caps (URL direct to diffrent address)
+no space (URL add %20)
+no special character (hard to read and OS dont allow)
+no underscore (URL breaks)
+no period (.)
+
+Year format: YYYYMMDD
+Time format: HHMMSS
+
+Be consistent
+
+no more than 50 letters
+
+limit path upto 10
+
+Eg. boo-backup-20220423-232454
