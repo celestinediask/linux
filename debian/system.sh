@@ -28,10 +28,10 @@ comment_out_deb_src() {
     fi
 
     # Backup the original sources.list file
-    cp -i /etc/apt/sources.list /etc/apt/sources.list.bak
+    sudo cp -i /etc/apt/sources.list /etc/apt/sources.list.bak
 
     # Comment out all deb-src lines
-    sed -i 's/^\(deb-src.*\)$/#\1/' /etc/apt/sources.list
+    sudo sed -i 's/^\(deb-src.*\)$/#\1/' /etc/apt/sources.list
 
     echo "All deb-src lines have been commented out in /etc/apt/sources.list."
 }
