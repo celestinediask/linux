@@ -20,12 +20,8 @@ fix_wifi
 sudo apt install dbus-x11
 gnome_settings_host
 
+# import config
+cp -i ~/.config/vimrc ~/.vimrc
+
 # install packages
 sudo apt install vim mpv eog gnome-text-editor gnome-disk-utility gnome-system-monitor nautilus
-
-# chrome
-
-# firefox
-
-# import config
-cp -i ~/.config/* ~/.config
