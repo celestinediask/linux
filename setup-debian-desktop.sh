@@ -13,6 +13,9 @@ source ./gnome.sh
 check_os
 check_root
 comment_out_deb_src
+
+#sudo apt install gnome-session --no-install-recommends --no-install-suggests gdm3 kitty
+
 fix_wifi
 gnome_settings_host
 
@@ -25,6 +28,3 @@ sudo apt install vim mpv eog gnome-text-editor gnome-disk-utility gnome-system-m
 
 # import config
 cp -i config/* ~/config
-
-
-
