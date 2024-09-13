@@ -1,4 +1,5 @@
 gnome_settings_host() {
+	echo "setting gnome settings for host machine..."
 	# set dark theme
 	gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 	gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
@@ -27,6 +28,8 @@ gnome_settings_host() {
 }
 
 gnome_settings_guest() {
+	echo "setting gnome settings for guest machine..."
+	
 	# disable automatic screenlock
 	gsettings set org.gnome.desktop.screensaver lock-enabled false
 
