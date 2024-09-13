@@ -1,7 +1,9 @@
 # Check if OS is Debian-based
 check_os() {
 	echo "checking if OS is debian based..."
-	if ! grep -q "^ID=debian" /etc/os-release; then
+	if grep -q "^ID=debian" /etc/os-release; then
+		echo "This OS identified as debian based distributions."
+	else
 		echo "This script is intended for Debian-based distributions only. Exiting."
 		exit 1
 	fi
@@ -14,6 +16,7 @@ check_root() {
 		echo "Error: This script must be run as root!" >&2
 		exit 1
 	fi
+	echo "proceeding with root access..."
 }
 
 comment_out_deb_src() {
