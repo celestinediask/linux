@@ -8,14 +8,10 @@ check_os() {
 
 # Check if running with root privilage
 check_root() {
-	if [ "$(id -u)" != "0" ]; then
-		if ! sudo -n true 2>/dev/null; then
-		    echo "This script requires root privileges to execute."
-		fi
-		
-		sudo sh "$0" "$@"
-		exit $?
-	fi
+	if [ "$EUID" -ne 0 ]; then
+    echo "Error: This script must be run as root!" >&2
+    exit 1
+  fi
 }
 
 comment_out_deb_src() {
