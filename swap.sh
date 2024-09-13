@@ -37,11 +37,12 @@ set_swap() {
 
   # Make the swap file permanent by adding it to /etc/fstab
   if ! grep -q "$SWAPFILE" /etc/fstab; then
-    sudo sudo echo "$SWAPFILE none swap sw 0 0" >> /etc/fstab
+    #echo "$SWAPFILE none swap sw 0 0" >> /etc/fstab
+    echo "$SWAPFILE none swap sw 0 0" | sudo tee -a /etc/fstab
   fi
 
   # Verify the swap space
-  swapon --show
+  sudo swapon --show
 
   echo "Swap file setup complete."
 }
