@@ -18,10 +18,10 @@ comment_out_deb_src
 
 #sudo apt install gnome-session --no-install-recommends --no-install-suggests gdm3 kitty
 
-sudo apt install wpasupplicant
+sudo apt install wpasupplicant -y
 fix_wifi
 
-sudo apt install dbus-x11
+sudo apt install dbus-x11 -y
 gnome_settings_host
 
 # import config
