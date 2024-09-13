@@ -1,0 +1,5 @@
+{
+    "telemetry.telemetryLevel": "off",
+    "workbench.startupEditor": "none",
+    "workbench.preferredHighContrastColorTheme": "Default Dark Modern"
+}

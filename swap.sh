@@ -2,7 +2,7 @@
 set_swap() {
   # Define the swap file path and size
   SWAPFILE="/swapfile"
-  SWAPSIZE="8G"
+  SWAPSIZE="1G"
 
   # Check if the script is run as root
   if [ "$(id -u)" -ne "0" ]; then
