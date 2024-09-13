@@ -20,7 +20,7 @@ check_root() {
 }
 
 comment_out_deb_src() {
-	echo "running: commenting out deb_src..."
+	echo "commenting out deb_src..."
     # Check if backup file already exists
     if grep -qE '^\s*#.*deb-src' /etc/apt/sources.list; then
         echo "Already deb-src lines have been commented out in /etc/apt/sources.list."
