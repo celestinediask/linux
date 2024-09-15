@@ -27,8 +27,8 @@ gnome_settings_host
 set_swap
 
 # setup firefox profile
-#git clone https://github.com/celestinediask/firefox $project_root/tmp/firefox
-#$project_root/tmp/firefox/remove_bloat.sh
+git clone https://github.com/celestinediask/firefox $project_root/tmp/firefox
+$project_root/tmp/firefox/remove_bloat.sh
 
 # import config
 cp -i $project_root/config/vimrc ~/.vimrc
