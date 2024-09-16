@@ -3,6 +3,8 @@
 
 set -e
 
+sudo test || true
+
 install_go() {
     # Step 1: Fetch the latest Go version
     LATEST_VERSION=$(curl -s https://go.dev/VERSION?m=text | grep -oE '^go[0-9\.]+')
