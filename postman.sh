@@ -1,61 +1,64 @@
-install_postman() {
-	# Checking for previously installed postman leftovers
-	paths="
-	/opt/Postman
-	/usr/bin/postman
-	/usr/share/applications/postman.desktop
-	"
+#!/bin/bash
+# postman install helper
 
-	found_conflict=0
+set -e
 
-	echo "Checking for previously installed postman leftovers..."
-	for path in $paths; do
-		if [ -e "$path" ]; then
-		    echo "$path"
-		    found_conflict=1
-		fi
-	done
+# Checking for previously installed postman leftovers
+paths="
+/opt/Postman
+/usr/bin/postman
+/usr/share/applications/postman.desktop
+"
 
-	if [ $found_conflict -eq 1 ]; then
-		echo "Error: postman leftovers found. Please remove it to install postman. Exiting."
-		exit 1
+found_conflict=0
+
+echo "Checking for previously installed postman leftovers..."
+for path in $paths; do
+	if [ -e "$path" ]; then
+	    echo "$path"
+	    found_conflict=1
 	fi
+done
 
-	# Check if previously downloaded file exists
-	if [ -f "/tmp/postman-linux-x64.tar.gz" ]; then
-		sudo rm /tmp/postman-linux-x64.tar.gz
-		echo "File /tmp/postman-linux-x64.tar.gz removed."
-	fi
+if [ $found_conflict -eq 1 ]; then
+	echo "Error: postman leftovers found. Please remove it to install postman. Exiting."
+	exit 1
+fi
 
-	# Download Postman tarball to temp storage
-	echo "Downloading Postman..."
-	wget https://dl.pstmn.io/download/latest/linux64 -O /tmp/postman-linux-x64.tar.gz
+# Check if previously downloaded file exists
+if [ -f "/tmp/postman-linux-x64.tar.gz" ]; then
+	sudo rm /tmp/postman-linux-x64.tar.gz
+	echo "File /tmp/postman-linux-x64.tar.gz removed."
+fi
 
-	# Extract tarball to /opt directory
-	echo "Extracting Postman..."
-	sudo tar -xzf /tmp/postman-linux-x64.tar.gz -C /opt
+# Download Postman tarball to temp storage
+echo "Downloading Postman..."
+wget https://dl.pstmn.io/download/latest/linux64 -O /tmp/postman-linux-x64.tar.gz
 
-	# Create symbolic link
-	echo "Creating desktop shortcut icon..."
-	sudo ln -s /opt/Postman/Postman /usr/bin/postman
+# Extract tarball to /opt directory
+echo "Extracting Postman..."
+sudo tar -xzf /tmp/postman-linux-x64.tar.gz -C /opt
 
-	# Create desktop entry
-	echo "Creating desktop entry..."
-	cat <<EOF | sudo tee /usr/share/applications/postman.desktop
-	[Desktop Entry]
-	Name=Postman
-	Exec=/opt/Postman/Postman
-	Icon=/opt/Postman/app/resources/app/assets/icon.png
-	Terminal=false
-	Type=Application
-	Categories=Development;
-	EOF
+# Create symbolic link
+echo "Creating desktop shortcut icon..."
+sudo ln -s /opt/Postman/Postman /usr/bin/postman
 
-	# Verify installation
-	echo "Verifying installation..."
-	if command -v postman --version >/dev/null 2>&1; then
-		echo "Postman is installed successfully."
-	else
-		echo "Postman installation failed."
-	fi
-}
+# Create desktop entry
+echo "Creating desktop entry..."
+cat <<EOF | sudo tee /usr/share/applications/postman.desktop
+[Desktop Entry]
+Name=Postman
+Exec=/opt/Postman/Postman
+Icon=/opt/Postman/app/resources/app/assets/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+EOF
+
+# Verify installation
+echo "Verifying installation..."
+if command -v postman --version >/dev/null 2>&1; then
+	echo "Postman is installed successfully."
+else
+	echo "Postman installation failed."
+fi
