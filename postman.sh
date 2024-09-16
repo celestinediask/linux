@@ -3,6 +3,8 @@
 
 set -e
 
+sudo test || true
+
 # Checking for previously installed postman leftovers
 paths="
 /opt/Postman
