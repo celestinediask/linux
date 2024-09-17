@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e
+
 add_repo_chrome() {
 	echo "Adding google-chrome repo"
 	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /etc/apt/trusted.gpg.d/google.asc >/dev/null
@@ -11,3 +15,5 @@ install_chrome_manual() {
 	sudo rm /tmp/google-chrome-stable_current_amd64.deb
 	echo "chrome installed"
 }
+
+add_repo_chrome
