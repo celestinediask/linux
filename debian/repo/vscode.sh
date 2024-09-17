@@ -24,3 +24,5 @@ add_vscode_repo() {
 	
 	echo "vscode repo added"
  }
+
+add_vscode_repo
