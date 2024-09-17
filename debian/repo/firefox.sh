@@ -1,3 +1,9 @@
+#!/bin/bash
+
+set -e
+
+sudo test || true
+
 add_repo_firefox() {
 	echo "Adding firefox repo..."
 	# Create directory for APT repository keys if it doesn't exist
@@ -25,3 +31,5 @@ add_repo_firefox() {
 
 	echo "firefox repo added"
 }
+
+add_repo_firefox
