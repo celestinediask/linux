@@ -3,6 +3,12 @@
 
 set -e
 
+# Check if wget is installed
+if ! command -v wget &> /dev/null; then
+    echo "wget command not found. Please install wget."
+    exit 1
+fi
+
 sudo test || true
 
 # Checking for previously installed postman leftovers
