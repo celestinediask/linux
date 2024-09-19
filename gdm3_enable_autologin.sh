@@ -3,8 +3,12 @@
 
 set -e
 
+echo "running: $THIS_SCRIPT"
+
 # Get current username
 CURRENT_USER=$(whoami)
+
+sudo test || true
 
 # Check if gdm3 is installed
 if ! dpkg -l | grep -q gdm3; then
