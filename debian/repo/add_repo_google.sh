@@ -2,6 +2,8 @@
 
 set -e
 
+THIS_SCRIPT=$(basename "$0")
+
 echo "adding google repo to debian..."
 
 # Check if the system is Debian-based
