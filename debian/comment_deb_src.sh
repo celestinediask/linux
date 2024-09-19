@@ -2,6 +2,7 @@
 
 set -e
 
+# check debian
 # give exit code
 
 echo "commenting out deb_src..."
