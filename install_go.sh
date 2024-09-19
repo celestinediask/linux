@@ -20,7 +20,6 @@ if ! ping -c 1 $ping_server > /dev/null 2>&1; then
     exit 1
 fi
 
-exit
 sudo test || true
 
 # Step 1: Fetch the latest Go version
