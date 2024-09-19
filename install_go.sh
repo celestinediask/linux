@@ -32,7 +32,7 @@ echo "Downloading $LATEST_VERSION from $DOWNLOAD_LINK..."
 wget $DOWNLOAD_LINK -O /tmp/go.tar.gz
 
 # Step 3: Remove any previous Go installation (optional)
-echo "Removing old Go installation (if any)..."
+echo "Removing old Go installation if any..."
 sudo rm -rf /usr/local/go
 
 # Step 4: Extract the new Go tarball to /usr/local
