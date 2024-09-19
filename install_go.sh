@@ -8,11 +8,13 @@ ping_server="9.9.9.9"
 
 echo "running: $THIS_SCRIPT"
 
-# Check if curl is installed
-if ! command -v curl &> /dev/null; then
-    echo "Error: curl is not installed."
-    exit 1
-fi
+# Check if curl and wget are installed
+for cmd in curl wget; do
+    if ! command -v $cmd &> /dev/null; then
+        echo "Error: $cmd is not installed."
+        exit 1
+    fi
+done
 
 # Check for internet connectivity
 if ! ping -c 1 $ping_server > /dev/null 2>&1; then
@@ -28,7 +30,10 @@ DOWNLOAD_LINK="https://go.dev/dl/${LATEST_VERSION}.linux-amd64.tar.gz"
 
 # Step 2: Download the latest Go tarball
 echo "Downloading $LATEST_VERSION from $DOWNLOAD_LINK..."
-wget $DOWNLOAD_LINK -O /tmp/go.tar.gz
+if ! wget $DOWNLOAD_LINK -O /tmp/go.tar.gz; then
+    echo "Error downloading Go tarball."
+    exit 1
+fi
 
 # Step 3: Remove any previous Go installation (optional)
 echo "Removing old Go installation if any..."
@@ -44,11 +49,11 @@ if ! grep -q "export PATH=\$PATH:/usr/local/go/bin" ~/.bashrc; then
     echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.bashrc
 fi
 
-# Step 6: Apply the new PATH
-source ~/.bashrc
-
 # Clean up
 sudo rm /tmp/go.tar.gz
 
+# Inform user to apply new PATH or open a new terminal
+echo "Go installation complete. Please run 'source ~/.bashrc' or open a new terminal to apply the updated PATH."
+
 # Verify the installation
-go version
+/usr/local/go/bin/go version
