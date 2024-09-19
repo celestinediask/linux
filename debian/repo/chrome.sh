@@ -25,4 +25,4 @@ fi
 wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb
 sudo rm /tmp/google-chrome-stable_current_amd64.deb
-echo "chrome installed"
+echo "google-chrome installed via direct method"
