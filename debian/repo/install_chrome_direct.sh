@@ -2,7 +2,7 @@
 
 set -e
 
-echo "installing google-chrome directly..."
+echo "installing google-chrome directly to debian..."
 
 # Check if the system is Debian-based
 if ! grep -q "^ID=debian" /etc/os-release; then
@@ -25,4 +25,5 @@ fi
 wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb
 sudo rm /tmp/google-chrome-stable_current_amd64.deb
+
 echo "google-chrome installed via direct method"
