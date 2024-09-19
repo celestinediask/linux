@@ -9,6 +9,12 @@ if ! command -v wget &> /dev/null; then
     exit 1
 fi
 
+# Check for internet connectivity
+if ! ping -c 1 9.9.9.9 > /dev/null 2>&1; then
+    echo "No internet connection. Exiting..."
+    exit 1
+fi
+
 sudo test || true
 
 # Checking for previously installed postman leftovers
