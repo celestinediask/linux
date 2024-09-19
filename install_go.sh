@@ -6,7 +6,7 @@ set -e
 THIS_SCRIPT=$(basename "$0")
 ping_server="9.9.9.9"
 
-echo "running: "$THIS_SCRIPT"
+echo "running: $THIS_SCRIPT"
 
 # Check if wget is installed
 if ! command -v curl &> /dev/null; then
