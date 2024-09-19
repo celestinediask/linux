@@ -4,7 +4,7 @@
 set -e
 
 THIS_SCRIPT=$(basename "$0")
-ping_server="debian.org"
+ping_server="9.9.9.9"
 
 echo "running: "$THIS_SCRIPT"
 
