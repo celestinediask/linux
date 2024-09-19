@@ -8,7 +8,7 @@ ping_server="9.9.9.9"
 
 echo "running: $THIS_SCRIPT"
 
-# Check if wget is installed
+# Check if curl is installed
 if ! command -v curl &> /dev/null; then
     echo "Error: curl is not installed."
     exit 1
