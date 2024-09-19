@@ -2,6 +2,12 @@
 
 set -e
 
+# Check if the system is Debian-based
+if ! grep -q "^ID=debian" /etc/os-release; then
+	echo "$THIS_SCRIPT is intended for Debian-based distributions only. Exiting."
+	exit 1
+fi
+
 # Check if wget is installed
 if ! command -v wget &> /dev/null; then
     echo "Error: wget is not installed."
