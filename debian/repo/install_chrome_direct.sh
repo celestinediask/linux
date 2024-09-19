@@ -2,6 +2,8 @@
 
 set -e
 
+THIS_SCRIPT=$(basename "$0")
+
 echo "installing google-chrome directly to debian..."
 
 # Check if the system is Debian-based
