@@ -4,6 +4,7 @@ set -e
 
 sudo test || true
 
+THIS_SCRIPT=$(basename "$0")
 
 echo "Adding firefox to debian repo..."
 
