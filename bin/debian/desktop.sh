@@ -18,6 +18,12 @@ if ! grep -q "^ID=debian" /etc/os-release; then
 	exit 1
 fi
 
+# exit if temp folder exist
+if [ -d "$TEMP_DIR" ]; then
+    echo "Please remove '$TEMP_DIR' to proceed."
+    exit 1
+fi
+
 # Check for internet connectivity
 if ! ping -c 1 9.9.9.9 > /dev/null 2>&1; then
     echo "No internet connection. Exiting..."
@@ -60,8 +66,6 @@ $PROJECT_ROOT/gnome/gsettings_host.sh
 if [ ! -d "$TEMP_DIR" ]; then
     mkdir -p "$TEMP_DIR"
     echo "Directory '$TEMP_DIR' has been created."
-else
-    echo "Directory '$TEMP_DIR' already exists."
 fi
 
 cd $TEMP_DIR
