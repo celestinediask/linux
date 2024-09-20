@@ -3,7 +3,11 @@
 
 set -e
 
+THIS_SCRIPT=$(basename "$0")
+echo "running: $THIS_SCRIPT"
+
 echo "setting gnome settings for host machine..."
+
 # set dark theme
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
@@ -25,9 +29,9 @@ gsettings set org.gnome.desktop.interface show-battery-percentage true
 gsettings set org.gnome.shell favorite-apps "['kitty.desktop', 'org.gnome.Nautilus.desktop', 'firefox-esr.desktop', 'firefox.desktop', 'google-chrome.desktop']"
 
 # set background color
-gsettings set org.gnome.desktop.background primary-color '#023c88' # blue
+#gsettings set org.gnome.desktop.background primary-color '#023c88' # blue
 
 # enable over amplification
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 
-echo "custom gnome settings applied"
+echo "successfully applied custom gnome settings"
