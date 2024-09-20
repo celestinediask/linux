@@ -3,6 +3,7 @@
 set -e
 
 THIS_SCRIPT=$(basename "$0")
+echo "running: $THIS_SCRIPT"
 
 echo "adding google repo to debian..."
 

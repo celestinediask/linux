@@ -16,7 +16,7 @@ fi
 # Check if the /etc/network/interfaces file exists
 if [ ! -f /etc/network/interfaces ]; then
     echo "/etc/network/interfaces does not exist. skipping wifi fix."
-    exit 1
+    exit 0
 fi
 
 sudo mv -i /etc/network/interfaces ~/interfaces.bak

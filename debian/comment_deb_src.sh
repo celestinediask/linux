@@ -10,7 +10,7 @@ echo "commenting out deb_src..."
 # Check if backup file already exists
 if grep -qE '^\s*#.*deb-src' /etc/apt/sources.list; then
   echo "Already deb-src lines have been commented out in /etc/apt/sources.list."
-  exit
+  exit 0
 fi
 
 # Backup the original sources.list file
