@@ -66,6 +66,7 @@ fi
 
 cd $TEMP_DIR
 git clone https://github.com/celestinediask/firefox
+cd firefox
 ./remove_bloat.sh
 
 # import config
