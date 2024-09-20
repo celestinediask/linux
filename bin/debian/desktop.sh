@@ -5,28 +5,55 @@ set -e
 
 sudo test || true
 
+PROJECT_ROOT="../.."
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-PROJECT_ROOT="../.."
+THIS_SCRIPT=$(basename "$0")
+echo "running: $THIS_SCRIPT"
 
-source $PROJECT_ROOT/debian/system.sh 
-source $PROJECT_ROOT/gnome.sh 
-source $PROJECT_ROOT/swap.sh
-source $PROJECT_ROOT/debian/apps/chrome.sh
+# Check if the system is Debian-based
+if ! grep -q "^ID=debian" /etc/os-release; then
+	echo "$THIS_SCRIPT is intended for Debian-based distributions only. Exiting."
+	exit 1
+fi
 
-check_os
-comment_out_deb_src
-add_repo_chrome
+# Check for internet connectivity
+if ! ping -c 1 9.9.9.9 > /dev/null 2>&1; then
+    echo "No internet connection. Exiting..."
+    exit 1
+fi
+
+debian/comment_deb_src.sh
+
+debian/repo/add_repo_google.sh
+
 sudo apt update
 
-sudo apt install gnome-session --no-install-recommends --no-install-suggests gdm3 kitty vim -y
-sudo apt install mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor gnome-control-center fonts-mlym nautilus firefox-esr curl dbus-x11 wpasupplicant network-manager google-chrome-stable -y
+# install packages
+sudo apt install -y gnome-session --no-install-recommends --no-install-suggests
+sudo apt install -y gdm3
+sudo apt install -y kitty
+sudo apt install -y vim
+sudo apt install -y mpv
+sudo apt install -y eog
+sudo apt install -y evince
+sudo apt install -y gnome-text-editor
+sudo apt install -y gnome-disk-utility
+sudo apt install -y gnome-system-monitor
+sudo apt install -y gnome-control-center
+sudo apt install -y fonts-mlym
+sudo apt install -y nautilus
+sudo apt install -y firefox-esr
+sudo apt install -y curl 
+sudo apt install -y dbus-x11 
+sudo apt install -y wpasupplicant 
+sudo apt install -y network-manager 
+sudo apt install -y google-chrome-stable
 
-fix_wifi
 
-gnome_settings_host
+debian/fix_wifi.sh
 
-set_swap
+gnome/gsettings_host.sh
 
 # setup firefox profile
 cd $PROJECT_ROOT/tmp

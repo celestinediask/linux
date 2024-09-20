@@ -3,8 +3,8 @@
 set -e
 
 THIS_SCRIPT=$(basename "$0")
-
 echo "running: $THIS_SCRIPT"
+
 echo "fixing wifi..."
 
 # Check if the system is Debian-based

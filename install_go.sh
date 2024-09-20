@@ -3,9 +3,9 @@
 
 set -e
 
-THIS_SCRIPT=$(basename "$0")
 ping_server="9.9.9.9"
 
+THIS_SCRIPT=$(basename "$0")
 echo "running: $THIS_SCRIPT"
 
 # Check if curl and wget are installed
