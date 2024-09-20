@@ -23,9 +23,9 @@ if ! ping -c 1 9.9.9.9 > /dev/null 2>&1; then
     exit 1
 fi
 
-debian/comment_deb_src.sh
+$PROJECT_ROOT/debian/comment_deb_src.sh
 
-debian/repo/add_repo_google.sh
+$PROJECT_ROOT/debian/repo/add_repo_google.sh
 
 sudo apt update
 
@@ -51,9 +51,9 @@ sudo apt install -y network-manager
 sudo apt install -y google-chrome-stable
 
 
-debian/fix_wifi.sh
+$PROJECT_ROOT/debian/fix_wifi.sh
 
-gnome/gsettings_host.sh
+$PROJECT_ROOT/gnome/gsettings_host.sh
 
 # setup firefox profile
 cd $PROJECT_ROOT/tmp
