@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # debian gnome desktop setup
 
 set -e
@@ -66,4 +66,4 @@ cp -i vimrc ~/.vimrc
 
 cd $SCRIPT_DIR
 
-echo "All done!"
+echo "All done! If finished you may reboot to new system."
