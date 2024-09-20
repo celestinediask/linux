@@ -36,27 +36,14 @@ $PROJECT_ROOT/debian/repo/add_repo_google.sh
 
 sudo apt update
 
-# install packages
-sudo apt install -y gnome-session --no-install-recommends --no-install-suggests
-sudo apt install -y gdm3
-sudo apt install -y kitty
-sudo apt install -y vim
-sudo apt install -y mpv
-sudo apt install -y eog
-sudo apt install -y evince
-sudo apt install -y gnome-text-editor
-sudo apt install -y gnome-disk-utility
-sudo apt install -y gnome-system-monitor
-sudo apt install -y gnome-control-center
-sudo apt install -y fonts-mlym
-sudo apt install -y nautilus
-sudo apt install -y firefox-esr
-sudo apt install -y curl 
-sudo apt install -y dbus-x11 
-sudo apt install -y wpasupplicant 
-sudo apt install -y network-manager 
-sudo apt install -y google-chrome-stable
+# install core packages
+sudo apt install -y gnome-session --no-install-recommends --no-install-suggests gdm3 kitty network-manager wpasupplicant dbus-x11 wget curl vim
 
+# install daily use packages
+sudo apt install -y gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym firefox-esr
+
+# install third party repo if any
+sudo apt install -y google-chrome-stable
 
 $PROJECT_ROOT/debian/fix_wifi.sh
 
