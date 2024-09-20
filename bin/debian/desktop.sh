@@ -7,6 +7,7 @@ sudo test || true
 
 PROJECT_ROOT="../.."
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+TEMP_DIR=$PROJECT_ROOT/tmp
 
 THIS_SCRIPT=$(basename "$0")
 echo "running: $THIS_SCRIPT"
@@ -56,7 +57,14 @@ $PROJECT_ROOT/debian/fix_wifi.sh
 $PROJECT_ROOT/gnome/gsettings_host.sh
 
 # setup firefox profile
-cd $PROJECT_ROOT/tmp
+if [ ! -d "$TEMP_DIR" ]; then
+    mkdir -p "$TEMP_DIR"
+    echo "Directory '$TEMP_DIR' has been created."
+else
+    echo "Directory '$TEMP_DIR' already exists."
+fi
+
+cd $TEMP_DIR
 git clone https://github.com/celestinediask/firefox
 ./remove_bloat.sh
 
