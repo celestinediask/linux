@@ -5,7 +5,7 @@ set -e
 
 # Check if Postman is installed (assuming Snap or direct binary installation)
 if command -v postman > /dev/null 2>&1 || [ -d "/opt/Postman" ]; then
-  echo "Postman is already installed. Exiting script."
+  echo "Postman is already installed. Skipping installation..."
   exit 0
 fi
 
