@@ -6,7 +6,7 @@ set -e
 ping_server="9.9.9.9"
 
 THIS_SCRIPT=$(basename "$0")
-echo "running: $THIS_SCRIPT"
+#echo "running: $THIS_SCRIPT"
 
 # Check if Go is installed
 if command -v go > /dev/null 2>&1; then
