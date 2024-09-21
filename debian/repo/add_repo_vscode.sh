@@ -6,8 +6,7 @@ set -e
 sudo test || true
 
 THIS_SCRIPT=$(basename "$0")
-
-echo "Adding vscode debian repo..."
+echo "running: $THIS_SCRIPT"
 
 # Check if the system is Debian-based
 if ! grep -q "^ID=debian" /etc/os-release; then
@@ -17,7 +16,7 @@ fi
 
 # Check if VSCode repo is already added
 if [ -f /etc/apt/sources.list.d/vscode.list ]; then
-    echo "VSCode repository is already added. Exiting script."
+    echo "VSCode repository is already added. Skipping adding vscode repo..."
     exit 0
 fi
 
@@ -26,6 +25,8 @@ if ! ping -c 1 debian.org > /dev/null 2>&1; then
     echo "No internet connection. Exiting..."
     exit 1
 fi
+
+echo "Adding vscode debian repo..."
 
 # install dependencies
 sudo apt install gpg wget apt-transport-https
