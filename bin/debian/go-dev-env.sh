@@ -17,26 +17,25 @@ if ! ping -c 1 9.9.9.9 > /dev/null 2>&1; then
     exit 1
 fi
 
-# install postgres
+# install postgresql
 if command -v psql > /dev/null 2>&1; then
   echo "PostgreSQL is already installed. Skipping installation."
 else
   echo "PostgreSQL is not installed. Installing now..."
   
-  # Update package list
   sudo apt update
   
-  # Install PostgreSQL
   sudo apt install -y postgresql #postgresql-contrib
 
   echo "PostgreSQL installation complete."
 fi
 
-# install vscode
-$PROJECT_ROOT/debian/repo/add_repo_vscode.sh
-
 # install go
 $PROJECT_ROOT/install_go.sh
+
+# install vscode and go extension
+$PROJECT_ROOT/debian/repo/add_repo_vscode.sh
+code --list-extensions | grep -q golang.go || code --install-extension golang.go
 
 # postman
 $PROJECT_ROOT/install_postman.sh
