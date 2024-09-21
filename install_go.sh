@@ -10,7 +10,7 @@ THIS_SCRIPT=$(basename "$0")
 
 # Check if Go is installed
 if [ -e /usr/local/go/bin/go ]; then
-    echo "Go is already installed. Exiting script."
+    echo "Go is already installed. Skipping this."
     exit 0
 fi
 
