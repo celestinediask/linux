@@ -12,7 +12,7 @@ THIS_SCRIPT=$(basename "$0")
 if command -v go > /dev/null 2>&1; then
   echo "Go is already installed. Exiting script."
   exit 0
-else
+fi
 
 # Check if curl and wget are installed
 for cmd in curl wget; do
