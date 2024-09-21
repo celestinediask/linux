@@ -61,6 +61,8 @@ sudo rm /tmp/go.tar.gz
 # Update current shell's PATH
 export PATH=$PATH:/usr/local/go/bin
 
+source ~/.bashrc
+
 # Verify the installation
 go version
 
