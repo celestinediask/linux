@@ -6,7 +6,7 @@ set -e
 sudo test || true
 
 THIS_SCRIPT=$(basename "$0")
-echo "running: $THIS_SCRIPT"
+#echo "running: $THIS_SCRIPT"
 
 # Check if the system is Debian-based
 if ! grep -q "^ID=debian" /etc/os-release; then
