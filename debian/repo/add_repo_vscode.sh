@@ -15,6 +15,12 @@ if ! grep -q "^ID=debian" /etc/os-release; then
 	exit 1
 fi
 
+# Check if VSCode is installed
+if command -v code > /dev/null 2>&1; then
+  echo "VSCode is already installed. Exiting script."
+  exit 0
+fi
+
 # Check if wget is installed
 if ! command -v wget &> /dev/null; then
     echo "Error: wget is not installed."
