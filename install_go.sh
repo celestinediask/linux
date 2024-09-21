@@ -58,8 +58,10 @@ fi
 # Clean up
 sudo rm /tmp/go.tar.gz
 
-# Inform user to apply new PATH or open a new terminal
-echo "Go installation complete. Please run 'source ~/.bashrc' or open a new terminal to apply the updated PATH."
+# Update current shell's PATH
+export PATH=$PATH:/usr/local/go/bin
 
 # Verify the installation
-/usr/local/go/bin/go version
+go version
+
+echo "Go installation complete."
