@@ -49,9 +49,9 @@ sudo rm -rf /usr/local/go
 echo "Installing Go $LATEST_VERSION..."
 sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 
-# Step 5: Add Go to the system PATH in ~/.bashrc (instead of ~/.profile)
+# Step 5: Add Go to the system PATH in /etc/profile
 if ! grep -q "export PATH=\$PATH:/usr/local/go/bin" /etc/profile; then
-    echo "Adding Go to your PATH in ~/.bashrc..."
+    echo "Adding Go to your PATH in /etc/profile..."
     echo "export PATH=\$PATH:/usr/local/go/bin" | sudo tee -a /etc/profile
     source /etc/profile
 fi
