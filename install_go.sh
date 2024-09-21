@@ -8,6 +8,12 @@ ping_server="9.9.9.9"
 THIS_SCRIPT=$(basename "$0")
 echo "running: $THIS_SCRIPT"
 
+# Check if Go is installed
+if command -v go > /dev/null 2>&1; then
+  echo "Go is already installed. Exiting script."
+  exit 0
+else
+
 # Check if curl and wget are installed
 for cmd in curl wget; do
     if ! command -v $cmd &> /dev/null; then
