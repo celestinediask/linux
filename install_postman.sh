@@ -3,6 +3,12 @@
 
 set -e
 
+# Check if Postman is installed (assuming Snap or direct binary installation)
+if command -v postman > /dev/null 2>&1 || [ -d "/opt/Postman" ]; then
+  echo "Postman is already installed. Exiting script."
+  exit 0
+else
+
 # Check if wget is installed
 if ! command -v wget &> /dev/null; then
     echo "wget command not found. Please install wget."
