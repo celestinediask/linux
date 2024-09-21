@@ -29,7 +29,7 @@ fi
 echo "Adding vscode debian repo..."
 
 # install dependencies
-sudo apt install gpg wget apt-transport-https
+sudo apt install -y gpg wget apt-transport-https
 
 # curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
