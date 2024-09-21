@@ -16,7 +16,7 @@ fi
 
 # Check if VSCode repo is already added
 if [ -f /etc/apt/sources.list.d/vscode.list ]; then
-    echo "VSCode repository is already added. Skipping adding vscode repo..."
+    echo "VSCode repo is already added. Skipping adding vscode repo..."
     exit 0
 fi
 
