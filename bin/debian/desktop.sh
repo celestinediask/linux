@@ -3,6 +3,16 @@
 
 set -e
 
+# turn of bluetooth
+# nautilus items count show
+# gnome-text-editor disable restore
+# chrome keyring
+# set default browser
+# replace kitty with gnome-terminal
+# gnome-terminal show bold colors
+# hindi font
+# gnome-termianl size 170 x 24
+
 sudo test || true
 
 PROJECT_ROOT="../.."
