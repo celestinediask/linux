@@ -34,4 +34,7 @@ gsettings set org.gnome.shell favorite-apps "['kitty.desktop', 'org.gnome.Nautil
 # enable over amplification
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 
+# show items cont in nautilus file manager
+gsettings set org.gnome.nautilus.icon-view captions "['none', 'size', 'none']"
+
 echo "successfully applied custom gnome settings"
