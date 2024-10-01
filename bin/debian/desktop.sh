@@ -3,16 +3,6 @@
 
 set -e
 
-# turn of bluetooth
-# nautilus items count show
-# gnome-text-editor disable restore
-# chrome keyring
-# set default browser
-# replace kitty with gnome-terminal
-# gnome-terminal show bold colors
-# hindi font
-# gnome-termianl size 170 x 24
-
 sudo test || true
 
 PROJECT_ROOT="../.."
@@ -47,15 +37,12 @@ $PROJECT_ROOT/debian/repo/add_repo_google.sh
 sudo apt update
 
 # install core packages
-sudo apt install -y gnome-session --no-install-recommends --no-install-suggests gdm3 kitty network-manager wpasupplicant dbus-x11 wget curl vim
+sudo apt install -y gnome-session --no-install-recommends --no-install-suggests 
 
-# install daily use packages
-sudo apt install -y gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym firefox-esr
+sudo apt install -y gdm3 kitty network-manager fonts-noto-color-emoji wpasupplicant dbus-x11 wget curl gnome-calculator gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym fonts-deva firefox-esr
 
 # install third party repo if any
 sudo apt install -y google-chrome-stable
-
-$PROJECT_ROOT/debian/fix_wifi.sh
 
 $PROJECT_ROOT/gnome/gsettings_host.sh
 
@@ -73,6 +60,9 @@ cd firefox
 # import config
 cd $PROJECT_ROOT/config
 cp -i vimrc ~/.vimrc
+
+# this will disconnect the internet until reboot therefore this line should be placed after all the internet required tasks 
+$PROJECT_ROOT/debian/fix_wifi.sh
 
 cd $SCRIPT_DIR
 
