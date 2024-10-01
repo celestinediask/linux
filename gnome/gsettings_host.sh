@@ -37,4 +37,7 @@ gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 # show items cont in nautilus file manager
 gsettings set org.gnome.nautilus.icon-view captions "['none', 'size', 'none']"
 
+# set default browser
+xdg-settings set default-web-browser google-chrome.desktop
+
 echo "successfully applied custom gnome settings"
