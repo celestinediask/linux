@@ -3,9 +3,7 @@
 set -e
 
 THIS_SCRIPT=$(basename "$0")
-echo "running: $THIS_SCRIPT"
-
-echo "adding google repo to debian..."
+#echo "running: $THIS_SCRIPT"
 
 # Check if the system is Debian-based
 if ! grep -q "^ID=debian" /etc/os-release; then
@@ -13,9 +11,15 @@ if ! grep -q "^ID=debian" /etc/os-release; then
 	exit 1
 fi
 
+# Check if google-chrome-stable is installed
+if dpkg -l | grep -q google-chrome-stable; then
+    echo "google chrome is already installed. Skipping..."
+    exit 0
+fi
+
 # Check if wget is installed
 if ! command -v wget &> /dev/null; then
-    echo "Error: wget is not installed."
+    echo "Error: wget is not installed. Exiting..."
     exit 1
 fi
 
@@ -25,9 +29,12 @@ if ! ping -c 1 debian.org > /dev/null 2>&1; then
     exit 1
 fi
 
-sudo test || true
-
 echo "Adding google-chrome repo..."
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /etc/apt/trusted.gpg.d/google.asc >/dev/null
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-echo "google repo added"
+
+sudo apt update
+
+sudo apt install -y google-chrome-stable
+
+echo "google-chrome-stable successfully installed"

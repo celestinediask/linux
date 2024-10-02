@@ -3,9 +3,12 @@
 
 set -e
 
+THIS_SCRIPT=$(basename "$0")
+#echo "running: $THIS_SCRIPT"
+
 # Check if Postman is installed (assuming Snap or direct binary installation)
 if command -v postman > /dev/null 2>&1 || [ -d "/opt/Postman" ]; then
-  echo "Postman is already installed. Skipping installation..."
+  echo "postman is already installed. Skipping..."
   exit 0
 fi
 

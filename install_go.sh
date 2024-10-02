@@ -5,12 +5,9 @@ set -e
 
 ping_server="9.9.9.9"
 
-THIS_SCRIPT=$(basename "$0")
-#echo "running: $THIS_SCRIPT"
-
 # Check if Go is installed
 if [ -e /usr/local/go/bin/go ]; then
-    echo "Go is already installed. Skipping this..."
+    echo "go is already installed. Skipping..."
     exit 0
 fi
 

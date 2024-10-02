@@ -5,12 +5,12 @@ set -e
 
 sudo test || true
 
-PROJECT_ROOT="../.."
+PROJECT_ROOT=$(realpath ..)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TEMP_DIR=$PROJECT_ROOT/tmp
 
 THIS_SCRIPT=$(basename "$0")
-echo "running: $THIS_SCRIPT"
+#echo "running: $THIS_SCRIPT"
 
 # Check if the system is Debian-based
 if ! grep -q "^ID=debian" /etc/os-release; then
@@ -32,7 +32,7 @@ fi
 
 $PROJECT_ROOT/debian/comment_deb_src.sh
 
-$PROJECT_ROOT/debian/repo/add_repo_google.sh
+$PROJECT_ROOT/debian/repo/install_chrome.sh
 
 sudo apt update
 
@@ -41,8 +41,6 @@ sudo apt install -y gnome-session --no-install-recommends --no-install-suggests
 
 sudo apt install -y gdm3 kitty network-manager fonts-noto-color-emoji wpasupplicant dbus-x11 wget curl gnome-calculator gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym fonts-deva firefox-esr
 
-# install third party repo if any
-sudo apt install -y google-chrome-stable
 
 $PROJECT_ROOT/gnome/gsettings_host.sh
 
@@ -56,10 +54,6 @@ cd $TEMP_DIR
 git clone https://github.com/celestinediask/firefox
 cd firefox
 ./remove_bloat.sh
-
-# import config
-cd $PROJECT_ROOT/config
-cp -i vimrc ~/.vimrc
 
 # this will disconnect the internet until reboot therefore this line should be placed after all the internet required tasks 
 $PROJECT_ROOT/debian/fix_wifi.sh

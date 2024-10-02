@@ -3,9 +3,7 @@
 set -e
 
 THIS_SCRIPT=$(basename "$0")
-echo "running: $THIS_SCRIPT"
-
-echo "fixing wifi..."
+#echo "running: $THIS_SCRIPT"
 
 # Check if the system is Debian-based
 if ! grep -q "^ID=debian" /etc/os-release; then
@@ -15,7 +13,7 @@ fi
 
 # Check if the /etc/network/interfaces file exists
 if [ ! -f /etc/network/interfaces ]; then
-    echo "/etc/network/interfaces does not exist. skipping wifi fix."
+    echo "/etc/network/interfaces does not exist. skipping wifi fix..."
     exit 0
 fi
 

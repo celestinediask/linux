@@ -1,9 +1,10 @@
 set -e
 # debian go dev env setup
 
-sudo test || true
+THIS_SCRIPT=$(basename "$0")
+#echo "running: $THIS_SCRIPT"
 
-PROJECT_ROOT="../.."
+PROJECT_ROOT=$(realpath ..)
 
 # Check if the system is Debian-based
 if ! grep -q "^ID=debian" /etc/os-release; then
@@ -19,9 +20,9 @@ fi
 
 # install postgresql
 if command -v psql > /dev/null 2>&1; then
-  echo "PostgreSQL is already installed. Skipping installation."
+  echo "postgresql is already installed. Skipping..."
 else
-  echo "PostgreSQL is not installed. Installing now..."
+  echo "postgresql is not installed. Installing now..."
   
   sudo apt update
   
@@ -34,7 +35,7 @@ fi
 $PROJECT_ROOT/install_go.sh
 
 # install vscode and go extension
-$PROJECT_ROOT/debian/repo/add_repo_vscode.sh
+$PROJECT_ROOT/debian/repo/install_code.sh
 code --list-extensions | grep -q golang.go || code --install-extension golang.go
 
 # postman
