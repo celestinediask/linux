@@ -26,7 +26,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
 # set favorite apps
-gsettings set org.gnome.shell favorite-apps "['kitty.desktop', 'org.gnome.Nautilus.desktop', 'firefox-esr.desktop', 'firefox.desktop', 'google-chrome.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'kitty.desktop', 'org.gnome.Nautilus.desktop', 'firefox-esr.desktop', 'firefox.desktop', 'google-chrome.desktop']"
 
 # set background color
 #gsettings set org.gnome.desktop.background primary-color '#023c88' # blue
