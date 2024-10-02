@@ -18,6 +18,12 @@ if dpkg -l | grep -q code; then
     exit 0
 fi
 
+# exit if code is already installed
+if command -v code &> /dev/null; then
+    echo "code is alreay installed. Skipping..."
+    exit 0
+fi
+
 # Check if VSCode repo is already added
 if [ -f /etc/apt/sources.list.d/vscode.list ]; then
     echo "VSCode repo is already added. Skipping..."
