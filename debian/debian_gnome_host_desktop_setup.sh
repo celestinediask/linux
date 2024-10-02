@@ -3,8 +3,6 @@
 
 set -e
 
-sudo test || true
-
 PROJECT_ROOT=$(realpath ..)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TEMP_DIR=$PROJECT_ROOT/tmp
@@ -30,6 +28,8 @@ if ! ping -c 1 9.9.9.9 > /dev/null 2>&1; then
     exit 1
 fi
 
+sudo test || true
+
 $PROJECT_ROOT/debian/comment_deb_src.sh
 
 sudo apt update
@@ -37,7 +37,7 @@ sudo apt update
 # install core packages
 sudo apt install -y gnome-session --no-install-recommends --no-install-suggests 
 
-sudo apt install -y gdm3 kitty network-manager fonts-noto-color-emoji wpasupplicant dbus-x11 wget curl gnome-calculator gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym fonts-deva firefox-esr
+sudo apt install -y gdm3 gnome-terminal network-manager fonts-noto-color-emoji wpasupplicant dbus-x11 wget curl gnome-calculator gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym fonts-deva firefox-esr
 
 $PROJECT_ROOT/debian/repo/install_chrome.sh
 
