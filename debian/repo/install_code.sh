@@ -18,7 +18,7 @@ if command -v code &> /dev/null; then
     exit 0
 fi
 
-# Check if VSCode repo is already added
+# Check if code repo is already added
 if [ -f /etc/apt/sources.list.d/vscode.list ]; then
     echo "VSCode repo is already added. Skipping..."
     exit 0
@@ -32,15 +32,23 @@ fi
 
 sudo test || true
 
+# Update package list and upgrade existing packages
+sudo apt update && sudo apt upgrade -y
+
+# Install dependencies
+sudo apt install -y wget gpg apt-transport-https
+
 echo "Adding vscode debian repo..."
-sudo apt-get install wget gpg
+# Download and install the Microsoft GPG key
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
-rm -f packages.microsoft.gpg
+rm packages.microsoft.gpg
 
-sudo apt install apt-transport-https
+# Add the VS Code repository
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+
 sudo apt update
-sudo apt install -y code # or code-insiders
 
-echo "code installed successfully"
+sudo apt install -y code
+
+echo "code has been installed successfully"
