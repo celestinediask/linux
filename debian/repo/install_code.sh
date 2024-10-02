@@ -30,6 +30,8 @@ if ! ping -c 1 debian.org > /dev/null 2>&1; then
     exit 1
 fi
 
+sudo test || true
+
 echo "Adding vscode debian repo..."
 sudo apt-get install wget gpg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
