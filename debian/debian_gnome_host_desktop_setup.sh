@@ -32,8 +32,6 @@ fi
 
 $PROJECT_ROOT/debian/comment_deb_src.sh
 
-$PROJECT_ROOT/debian/repo/install_chrome.sh
-
 sudo apt update
 
 # install core packages
@@ -41,6 +39,7 @@ sudo apt install -y gnome-session --no-install-recommends --no-install-suggests
 
 sudo apt install -y gdm3 kitty network-manager fonts-noto-color-emoji wpasupplicant dbus-x11 wget curl gnome-calculator gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym fonts-deva firefox-esr
 
+$PROJECT_ROOT/debian/repo/install_chrome.sh
 
 $PROJECT_ROOT/gnome/gsettings_host.sh
 
