@@ -18,6 +18,8 @@ if ! ping -c 1 9.9.9.9 > /dev/null 2>&1; then
     exit 1
 fi
 
+sudo test || true
+
 # install postgresql
 if command -v psql > /dev/null 2>&1; then
   echo "postgresql is already installed. Skipping..."
