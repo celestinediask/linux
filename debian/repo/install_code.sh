@@ -12,12 +12,6 @@ if ! grep -q "^ID=debian" /etc/os-release; then
 	exit 1
 fi
 
-# Check if Visual Studio Code is installed
-if dpkg -l | grep -q code; then
-    echo "code is already installed. Skipping..."
-    exit 0
-fi
-
 # exit if code is already installed
 if command -v code &> /dev/null; then
     echo "code is alreay installed. Skipping..."
