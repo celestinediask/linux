@@ -8,9 +8,10 @@ start_time=$(date +%s)
 
 sudo apt update
 
-sudo apt install -y gnome-session --no-install-recommends --no-install-suggests
+sudo apt install -y gnome-session gdm3 gnome-terminal
 
-sudo apt install -y gdm3 gnome-terminal
+# pin gnome terminal to gnome dash
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop']"
 
 end_time=$(date +%s)
 
