@@ -17,7 +17,7 @@ if [ ! -f /etc/network/interfaces ]; then
     exit 0
 fi
 
-sudo mv -i /etc/network/interfaces ~/interfaces.bak
+sudo mv -i /etc/network/interfaces ~/etc/network/_interfaces.bak
 sudo systemctl restart wpa_supplicant.service
 sudo systemctl restart NetworkManager
 
