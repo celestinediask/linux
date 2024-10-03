@@ -3,6 +3,8 @@
 
 set -e
 
+start_time=$(date +%s)
+
 THIS_SCRIPT=$(basename "$0")
 #echo "running: $THIS_SCRIPT"
 
@@ -50,5 +52,9 @@ echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft
 sudo apt update
 
 sudo apt install -y code
+
+end_time=$(date +%s)
+execution_time=$((end_time - start_time))
+echo "The script took $execution_time seconds to complete."
 
 echo "code has been installed successfully"
