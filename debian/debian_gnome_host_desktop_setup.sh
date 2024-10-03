@@ -3,6 +3,8 @@
 
 set -e
 
+start_time=$(date +%s)
+
 PROJECT_ROOT=$(realpath ..)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TEMP_DIR=$PROJECT_ROOT/tmp
@@ -30,14 +32,9 @@ fi
 
 sudo test || true
 
-$PROJECT_ROOT/debian/comment_deb_src.sh
-
 sudo apt update
 
-# install core packages
-sudo apt install -y gnome-session --no-install-recommends --no-install-suggests 
-
-sudo apt install -y gdm3 gnome-terminal network-manager fonts-noto-color-emoji wpasupplicant dbus-x11 wget curl gnome-calculator gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym fonts-deva firefox-esr
+sudo apt install -y fonts-noto-color-emoji dbus-x11 wget curl gnome-calculator cheese gnome-control-center nautilus mpv eog evince gnome-text-editor gnome-disk-utility gnome-system-monitor fonts-mlym fonts-deva firefox-esr
 
 $PROJECT_ROOT/debian/repo/install_chrome.sh
 
@@ -54,9 +51,8 @@ git clone https://github.com/celestinediask/firefox
 cd firefox
 ./remove_bloat.sh
 
-# this will disconnect the internet until reboot therefore this line should be placed after all the internet required tasks 
-$PROJECT_ROOT/debian/fix_wifi.sh
-
 cd $SCRIPT_DIR
 
-echo "All done! If finished you may reboot to new system."
+end_time=$(date +%s)
+execution_time=$((end_time - start_time))
+echo "debian gnome host desktop setup has been successfully completed in $execution_time seconds."
