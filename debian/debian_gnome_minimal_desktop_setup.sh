@@ -2,6 +2,8 @@
 
 set -e
 
+sudo test || true
+
 start_time=$(date +%s)
 
 ./comment_deb_src.sh
