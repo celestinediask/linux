@@ -8,7 +8,7 @@ set -e
 SWAPFILE="/swapfile"
 
 # Prompt the user for a number between 1 and 64
-echo -n "Please enter swap size between 1 and 64: "
+echo -n "Please enter swap size: "
 read SWAPSIZE
 
 # Check if the input is within the valid range
