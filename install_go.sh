@@ -52,8 +52,9 @@ sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 if ! grep -q "export PATH=\$PATH:/usr/local/go/bin" /etc/profile; then
     echo "Adding Go to your PATH in /etc/profile..."
     echo "export PATH=\$PATH:/usr/local/go/bin" | sudo tee -a /etc/profile
-    source /etc/profile
 fi
+
+source /etc/profile
 
 # Clean up
 sudo rm /tmp/go.tar.gz
