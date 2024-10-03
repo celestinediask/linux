@@ -42,7 +42,7 @@ fi
 
 # Step 3: Remove any previous Go installation (optional)
 echo "Removing old Go installation if any..."
-sudo rm -rf /usr/local/go
+sudo rm -r /usr/local/go
 
 # Step 4: Extract the new Go tarball to /usr/local
 echo "Installing Go $LATEST_VERSION..."
@@ -55,8 +55,6 @@ if ! grep -q "export PATH=\$PATH:/usr/local/go/bin" ~/.bashrc; then
 fi
 
 export PATH=$PATH:/usr/local/go/bin
-
-source ~/.bashrc
 
 # Clean up
 sudo rm /tmp/go.tar.gz
