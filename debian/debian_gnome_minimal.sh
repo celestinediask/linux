@@ -2,9 +2,6 @@
 
 set -e
 
-# switch to dark theme
-# enable tap to click
-
 start_time=$(date +%s)
 
 ./comment_deb_src.sh
@@ -13,7 +10,7 @@ sudo apt update
 
 sudo apt install -y gnome-session --no-install-suggests --no-install-recommends
 
-sudo apt install gdm3 gnome-terminal
+sudo apt install -y gdm3 gnome-terminal
 
 # switch legacy apps to dark them like gnome-terminal
 gsettings set org.gnome.desktop.interface gtk-theme 'HighContrastInverse'
