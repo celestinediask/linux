@@ -27,7 +27,7 @@ start_time=$(date +%s)
 # Check if swap is already enabled
 if sudo swapon --show | grep -q "$SWAPFILE"; then
   echo "Swap file $SWAPFILE is already enabled."
-  return
+  exit 0
 fi
 
 # Create the swap file
