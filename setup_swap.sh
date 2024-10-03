@@ -18,6 +18,7 @@ if [[ "$SWAPSIZE" -ge 1 && "$SWAPSIZE" -le 64 ]]; then
 else
     # Handle the case where the number is out of range
     echo "Error: The swap size must be between 1 and 64."
+    exit 0
 fi
 
 start_time=$(date +%s)
