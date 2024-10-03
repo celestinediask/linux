@@ -8,9 +8,9 @@ start_time=$(date +%s)
 
 sudo apt update
 
-sudo apt install gnome-session --no-install-recommends --no-install-suggests
+sudo apt install -y gnome-session --no-install-recommends --no-install-suggests
 
-sudo apt install gdm3 gnome-terminal
+sudo apt install -y gdm3 gnome-terminal
 
 end_time=$(date +%s)
 
