@@ -54,6 +54,8 @@ if ! grep -q "export PATH=\$PATH:/usr/local/go/bin" ~/.bashrc; then
     echo "export PATH=\$PATH:/usr/local/go/bin" | sudo tee -a ~/.bashrc
 fi
 
+export PATH=\$PATH:/usr/local/go/bin
+
 source ~/.bashrc
 
 # Clean up
