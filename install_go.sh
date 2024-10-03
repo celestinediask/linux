@@ -3,6 +3,8 @@
 
 set -e
 
+start_time=$(date +%s)
+
 ping_server="9.9.9.9"
 
 # Check if Go is installed
@@ -59,5 +61,9 @@ sudo rm /tmp/go.tar.gz
 # Verify the installation
 go version
 
+end_time=$(date +%s)
+execution_time=$((end_time - start_time))
+echo "go installation has been successfully completed in $execution_time seconds."
+
 # Inform user to apply new PATH or open a new terminal
-echo "Go installation complete. Please run 'source /etc/profile' or restart terminal to apply the updated PATH."
+echo "Please run 'source /etc/profile' or restart terminal to apply the updated PATH."
