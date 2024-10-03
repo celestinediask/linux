@@ -49,12 +49,12 @@ echo "Installing Go $LATEST_VERSION..."
 sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 
 # Step 5: Add Go to the system PATH in /etc/profile
-if ! grep -q "export PATH=\$PATH:/usr/local/go/bin" /etc/profile; then
+if ! grep -q "export PATH=\$PATH:/usr/local/go/bin" ~/.bashrc; then
     echo "Adding Go to your PATH in /etc/profile..."
-    echo "export PATH=\$PATH:/usr/local/go/bin" | sudo tee -a /etc/profile
+    echo "export PATH=\$PATH:/usr/local/go/bin" | sudo tee -a ~/.bashrc
 fi
 
-source /etc/profile
+source ~/.bashrc
 
 # Clean up
 sudo rm /tmp/go.tar.gz
@@ -67,4 +67,4 @@ execution_time=$((end_time - start_time))
 echo "go installation has been successfully completed in $execution_time seconds."
 
 # Inform user to apply new PATH or open a new terminal
-echo "Please run 'source /etc/profile' or restart terminal to apply the updated PATH."
+echo "Please run 'source ~/.bashrc' in current session."
