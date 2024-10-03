@@ -6,20 +6,21 @@ set -e
 
 # Define the swap file path and size
 SWAPFILE="/swapfile"
+SWAPSIZE="1G"
 
 # Prompt the user for a number between 1 and 64
-echo -n "Please enter swap size: "
-read SWAPSIZE
+# echo -n "Please enter swap size: "
+# read SWAPSIZE
 
-# Check if the input is within the valid range
-if [[ "$SWAPSIZE" -ge 1 && "$SWAPSIZE" -le 64 ]]; then
-    # Store the number in a variable and print it
-    echo "You entered: $SWAPSIZE"
-else
-    # Handle the case where the number is out of range
-    echo "Error: The swap size must be between 1 and 64."
-    exit 0
-fi
+# # Check if the input is within the valid range
+# if [[ "$SWAPSIZE" -ge 1 && "$SWAPSIZE" -le 64 ]]; then
+#     # Store the number in a variable and print it
+#     echo "You entered: $SWAPSIZE"
+# else
+#     # Handle the case where the number is out of range
+#     echo "Error: The swap size must be between 1 and 64."
+#     exit 0
+# fi
 
 start_time=$(date +%s)
 
