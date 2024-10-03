@@ -2,6 +2,9 @@
 
 set -e
 
+# switch to dark theme
+# enable tap to click
+
 start_time=$(date +%s)
 
 ./comment_deb_src.sh

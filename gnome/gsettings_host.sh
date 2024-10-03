@@ -8,10 +8,13 @@ echo "running: $THIS_SCRIPT"
 
 echo "setting gnome settings for host machine..."
 
-# set dark theme
+# switch to dark theme
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-gsettings set org.gnome.desktop.interface gtk-theme 'HighContrastInverse' # for legacy apps
+
+# dark theme for legacy apps like gnome-terminal
+gsettings set org.gnome.desktop.interface gtk-theme 'HighContrastInverse'
 
 # set icon theme
 gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
