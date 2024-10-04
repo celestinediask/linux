@@ -44,4 +44,4 @@ xdg-settings set default-web-browser google-chrome.desktop
 # disable gnome text editor session restore
 gsettings set org.gnome.TextEditor restore-session false
 
-echo "successfully applied custom gnome settings"
+echo "successfully applied custom gnome settings for host machine"
