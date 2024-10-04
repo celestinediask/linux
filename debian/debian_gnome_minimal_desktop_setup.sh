@@ -12,7 +12,7 @@ sudo apt update
 
 sudo apt install -y gnome-session --no-install-suggests --no-install-recommends
 
-sudo apt install -y gdm3 gnome-terminal network-manager wpasupplicant
+sudo apt install -y gdm3 gnome-terminal network-manager gnome-keyring wpasupplicant
 
 ./gnome_terminal_enable_bright_colors.sh
 
