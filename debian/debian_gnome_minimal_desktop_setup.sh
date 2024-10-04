@@ -34,6 +34,15 @@ gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 # this will disconnect the internet until reboot therefore this line should be placed after all the internet required tasks 
 ./fix_wifi.sh
 
+# create new txt file in templates
+if [ -d ~/Templates ]; then
+    # Create the new file
+    touch ~/Templates/new.txt
+    echo "File ~/Templates/new.txt created successfully."
+else
+    echo "Directory ~/Templates does not exist. Could not able to create new.txt template"
+fi
+
 end_time=$(date +%s)
 execution_time=$((end_time - start_time))
 echo "debian gnome minimal host desktop setup has been successfully completed in $execution_time seconds."
