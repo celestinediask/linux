@@ -5,8 +5,8 @@ set -e
 
 
 # Define the swap file path and size
-SWAPFILE="/swapfile"
-SWAPSIZE="1G"
+SWAPFILE="~/swapfile"
+SWAPSIZE="8G"
 
 # Prompt the user for a number between 1 and 64
 # echo -n "Please enter swap size: "
