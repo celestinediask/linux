@@ -19,6 +19,9 @@ sudo apt install -y gdm3 gnome-terminal network-manager gnome-keyring wpasupplic
 # switch legacy apps to dark them like gnome-terminal
 gsettings set org.gnome.desktop.interface gtk-theme 'HighContrastInverse'
 
+# switch to dark theme
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
 # pin gnome terminal to gnome dash
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop']"
 
