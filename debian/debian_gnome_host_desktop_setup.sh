@@ -47,7 +47,7 @@ if [ ! -d "$TEMP_DIR" ]; then
 fi
 
 cd $TEMP_DIR
-git clone https://github.com/celestinediask/firefox
+git clone https://github.com/etosy/firefox
 cd firefox
 ./remove_bloat.sh
 
