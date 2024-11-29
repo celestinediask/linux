@@ -10,6 +10,12 @@ if ! command -v wget &> /dev/null; then
     exit 1
 fi
 
+# Check if jq is installed
+if ! command -v jq &> /dev/null; then
+    echo "jq command not found. Please install jq."
+    exit 1
+fi
+
 # Check for internet connectivity
 if
  ! ping -c 1 9.9.9.9 > /dev/null 2>&1; then
