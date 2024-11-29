@@ -4,6 +4,7 @@ set -e
 
 THIS_SCRIPT=$(basename "$0")
 #echo "running: $THIS_SCRIPT"
+start_time=$(date +%s)
 
 # Check if the system is Debian-based
 if ! grep -q "^ID=debian" /etc/os-release; then
@@ -37,4 +38,6 @@ sudo apt update
 
 sudo apt install -y google-chrome-stable
 
-echo "google-chrome-stable successfully installed"
+end_time=$(date +%s)
+execution_time=$((end_time - start_time))
+echo "google-chrome installation has been successfully completed in $execution_time seconds."
