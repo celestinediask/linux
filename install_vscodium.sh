@@ -72,13 +72,13 @@ sudo chmod +x /opt/vscodium/vscodium.AppImage
 
 sudo ln -s /opt/vscodium/vscodium.AppImage /usr/bin/code
 
-sudo wget -O /opt/vscodium/icon.png "https://github.com/VSCodium/icons/blob/b96d266673cd1d7a09d4ddd869c669fcb7a1e8ba/icons/linux/circle1/blue1/paulo22s.png"
+sudo wget -O /opt/vscodium/vscodium.png "https://raw.githubusercontent.com/VSCodium/icons/refs/heads/main/icons/linux/nobg/blue1/zolt20.png"
 
 cat <<EOF | sudo tee /usr/share/applications/vscodium.desktop
 [Desktop Entry]
 Name=vscodium
 Exec=/opt/vscodium/vscodium.AppImage
-Icon=/opt/vscodium/icon.png
+Icon=/opt/vscodium/vscodium.png
 Terminal=false
 Type=Application
 Categories=Development;
