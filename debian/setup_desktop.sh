@@ -6,9 +6,9 @@ sudo test || true
 
 start_time=$(date +%s)
 
-for script in $(ls [0-9][0-9][0-9]_filename* | sort); do
+for script in $(ls [0-9][0-9][0-9]_* | sort); do
     echo "Executing $script"
-    #./"$script"
+    #bash "$script"
 done
 
 end_time=$(date +%s)
