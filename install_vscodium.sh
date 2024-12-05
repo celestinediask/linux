@@ -23,7 +23,7 @@ if
     exit 1
 fi
 
-# Checking for previously installed postman leftovers
+# Checking for previously installed leftovers
 paths="
 /opt/vscodium
 /usr/bin/code
@@ -32,7 +32,7 @@ paths="
 
 found_conflict=0
 
-echo "Checking for previously installed vscodium leftovers..."
+echo "Checking for previously installed leftovers..."
 for path in $paths; do
 	if [ -e "$path" ] || [ -L "$path" ]; then
 	    echo "$path"
@@ -41,7 +41,7 @@ for path in $paths; do
 done
 
 if [ $found_conflict -eq 1 ]; then
-	echo "Error: vscodium leftovers found. Please remove it to install vscodium. Exiting."
+	echo "Error: leftovers found. Please remove it to continue installation. Exiting."
 	exit 1
 fi
 

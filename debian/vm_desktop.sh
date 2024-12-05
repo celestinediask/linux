@@ -15,19 +15,9 @@ sudo apt install -y gdm3 gnome-terminal spice-vdagent
 
 ./gnome_terminal_enable_bright_colors.sh
 
-# switch legacy apps to dark them like gnome-terminal
-gsettings set org.gnome.desktop.interface gtk-theme 'HighContrastInverse'
+sudo ../gdm3_disable_autologin.sh
 
-# set dark theme
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
-# pin gnome terminal to gnome dash
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop']"
-
-# enable over amplification
-#gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
-
-# auto login
+../gnome/gsettings_guest.sh
 
 end_time=$(date +%s)
 execution_time=$((end_time - start_time))
