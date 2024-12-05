@@ -2,9 +2,6 @@
 
 set -e
 
-# check debian
-# give exit code
-
 # Check if backup file already exists
 if grep -qE '^\s*#.*deb-src' /etc/apt/sources.list; then
   echo "Already deb-src lines have been commented out in /etc/apt/sources.list."
