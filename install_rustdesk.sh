@@ -2,8 +2,6 @@
 
 set -e
 
-sudo test || true
-
 start_time=$(date +%s)
 
 missing=""
@@ -41,6 +39,8 @@ if [ $found_conflict -eq 1 ]; then
 	echo "Error: leftovers found. Please remove it to continue installation. Exiting."
 	exit 1
 fi
+
+sudo test || true
 
 ICON_URL="https://raw.githubusercontent.com/etosy/icons/refs/heads/main/rustdesk.png"
 
