@@ -1,11 +1,6 @@
 #!/bin/bash
 # gnome gsettings for host machine
 
-set -e
-
-THIS_SCRIPT=$(basename "$0")
-#echo "running: $THIS_SCRIPT"
-
 # switch to dark theme
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
