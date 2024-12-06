@@ -17,6 +17,7 @@ sudo apt install -y gdm3 gnome-terminal spice-vdagent
 
 ../gdm3_disable_autologin.sh
 
+../gnome/gsettings_host.sh
 ../gnome/gsettings_guest.sh
 
 end_time=$(date +%s)
