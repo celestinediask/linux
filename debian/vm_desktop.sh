@@ -7,15 +7,15 @@ sudo test || true
 
 start_time=$(date +%s)
 
-./comment_deb_src.sh
+./001_comment_deb_src.sh
 
 sudo apt update
 sudo apt install -y gnome-session --no-install-suggests --no-install-recommends
 sudo apt install -y gdm3 gnome-terminal spice-vdagent
 
-./gnome_terminal_enable_bright_colors.sh
+./003_gnome_terminal_enable_bright_colors.sh
 
-sudo ../gdm3_disable_autologin.sh
+../gdm3_disable_autologin.sh
 
 ../gnome/gsettings_guest.sh
 
