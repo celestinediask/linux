@@ -72,7 +72,7 @@ sudo chmod +x /opt/vscodium/vscodium.AppImage
 
 sudo ln -s /opt/vscodium/vscodium.AppImage /usr/bin/code
 
-sudo wget -O /opt/vscodium/vscodium.png "https://raw.githubusercontent.com/VSCodium/icons/refs/heads/main/icons/linux/nobg/blue1/zolt20.png"
+sudo wget -O /opt/vscodium/vscodium.png "https://raw.githubusercontent.com/etosy/icons/refs/heads/main/vscodium.png"
 
 cat <<EOF | sudo tee /usr/share/applications/vscodium.desktop
 [Desktop Entry]
