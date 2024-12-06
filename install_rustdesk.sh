@@ -6,9 +6,17 @@ sudo test || true
 
 start_time=$(date +%s)
 
-# Ensure jq and curl are installed
-if ! command -v jq &> /dev/null || ! command -v curl &> /dev/null; then
-    echo "This script requires jq and curl. Please install them first."
+missing=""
+
+for cmd in jq curl; do
+    if ! command -v $cmd &> /dev/null; then
+        missing="$missing$cmd "
+    fi
+done
+
+if [ -n "$missing" ]; then
+    echo "The following commands are missing: $missing"
+    echo "Please install the missing commands."
     exit 1
 fi
 
