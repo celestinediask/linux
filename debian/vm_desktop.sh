@@ -15,7 +15,7 @@ sudo apt install -y gdm3 gnome-terminal spice-vdagent
 
 bash 003_gnome_terminal_enable_bright_colors.sh
 
-bash ../gdm3_disable_autologin.sh
+bash ../gdm3_enable_autologin.sh
 
 bash ../gnome/gsettings_host.sh
 bash ../gnome/gsettings_guest.sh
