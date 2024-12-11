@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Check for root privileges
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root. Use sudo." >&2
-    exit 1
-fi
+set -e
+
+sudo test || true
 
 # Path to the GRUB configuration file
 GRUB_FILE="/etc/default/grub"
@@ -16,13 +14,13 @@ if [[ ! -f $GRUB_FILE ]]; then
 fi
 
 # Backup the original GRUB file
-cp "$GRUB_FILE" "$GRUB_FILE.bak"
+sudo cp "$GRUB_FILE" "$GRUB_FILE.bak"
 
 # Update GRUB_TIMEOUT setting
-sed -i 's/^GRUB_TIMEOUT=.*$/GRUB_TIMEOUT=0/' "$GRUB_FILE"
+sudo sed -i 's/^GRUB_TIMEOUT=.*$/GRUB_TIMEOUT=0/' "$GRUB_FILE"
 
 # Update GRUB configuration
 echo "Updating GRUB configuration..."
-update-grub
+sudo update-grub
 
 echo "GRUB timeout has been disabled. Original configuration backed up as $GRUB_FILE.bak"

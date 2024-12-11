@@ -16,9 +16,8 @@ sudo apt install -y gnome-session --no-install-suggests --no-install-recommends
 sudo apt install -y gdm3 gnome-terminal spice-vdagent
 
 bash 003_gnome_terminal_enable_bright_colors.sh
-
 bash ../gdm3_enable_autologin.sh
-
+bash ../disable_grub_timeout.sh
 bash ../gnome/gsettings_host.sh
 bash ../gnome/gsettings_guest.sh
 
