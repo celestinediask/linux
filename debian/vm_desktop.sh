@@ -11,9 +11,8 @@ exec > >(tee -a "logfile.log") 2>&1
 
 bash 001_comment_deb_src.sh
 
-sudo apt update
-sudo apt install -y gnome-session --no-install-suggests --no-install-recommends
-sudo apt install -y gdm3 gnome-terminal spice-vdagent
+sudo apt update && sudo apt install -y --no-install-suggests --no-install-recommends \
+  gnome-session gdm3 gnome-terminal spice-vdagent
 
 bash 003_gnome_terminal_enable_bright_colors.sh
 bash ../gdm3_enable_autologin.sh
