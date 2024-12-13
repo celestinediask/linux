@@ -2,6 +2,7 @@
 
 PROJECT_ROOT=$(realpath ..)
 TEMP_DIR=$PROJECT_ROOT/tmp
+CUR_DIR=$(pwd)
 
 if [ ! -d "$TEMP_DIR" ]; then
     mkdir -p "$TEMP_DIR"
@@ -12,3 +13,5 @@ cd $TEMP_DIR
 git clone https://github.com/etosy/firefox
 cd firefox
 ./remove_bloat.sh
+
+cd "$CUR_DIR"

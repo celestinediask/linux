@@ -1,12 +1,45 @@
 #!/bin/bash
 
-# Global variable for the VPN IP
-VPN_IP="149.40.62.25"  # Replace with your actual VPN IP
-WAIT=10
+VPN_IP=""
+WAIT=30
 
-# Function to get the current public IP
+# Colors
+MGN="\e[35m"
+GRN="\033[0;32m"
+RED="\033[0;31m"
+YLW="\033[0;33m"
+GRY="\033[1;30m"
+RES="\033[0m"
+
+check_curl_installed() {
+    if ! command -v curl &> /dev/null; then
+        echo "curl command not found. Exiting."
+        exit 1
+    fi
+}
+
 get_public_ip() {
     curl -s ifconfig.me
+}
+
+is_valid_ip() {
+    local ip="$1"
+    local regex="^([0-9]{1,3}\.){3}[0-9]{1,3}$"
+
+    if [[ "$ip" =~ $regex ]]; then
+        # IP format is correct, now check if each octet is between 0 and 255
+        IFS='.' read -r -a octets <<< "$ip"
+
+        for octet in "${octets[@]}"; do
+            if ((octet < 0 || octet > 255)); then
+                return 1  # Return false if any octet is out of range
+            fi
+        done
+
+        return 0  # Return true if all checks passed
+    else
+        return 1  # Return false if the format is incorrect
+    fi
 }
 
 # Function to extract the first three octets from an IP
@@ -22,13 +55,14 @@ check_ip_leak() {
 
     # Check if current_ip is empty
     if [ -z "$current_ip" ]; then
-        echo "Error: Unable to retrieve current public IP."
+        echo -e "\n${YLW}Warning: Unable to retrieve current public IP.${RES}"
         return
     fi
 
-    # Display the current IP and VPN IP
-    echo "Current IP: $current_ip"
-    echo "Expected VPN IP: $VPN_IP"
+    if ! is_valid_ip "$current_ip"; then
+        echo -e "${YLW}Warning: IP leak test failed.${RES} $current_ip"
+        return
+    fi
 
     # Extract the first three octets of both the current IP and the VPN IP
     current_ip_prefix=$(extract_ip_prefix "$current_ip")
@@ -36,10 +70,10 @@ check_ip_leak() {
 
     # Compare the current IP with the expected VPN IP
     if [ "$current_ip_prefix" != "$vpn_ip_prefix" ]; then
-        echo "IP Leak detected! Your real IP ($current_ip) is exposed. Exiting."
+        echo -e "\n${RED}IP Leak detected! Your real IP ($current_ip) is exposed.${RES} Exiting."
         exit 0
     else
-        echo "No IP leak detected. You are using the VPN correctly."
+        echo -en "\n${GRN}No IP leak detected. Current IP: $current_ip${RES}"
     fi
 }
 
@@ -47,11 +81,15 @@ check_ip_leak() {
 check_dns_leak() {
     # Query OpenDNS to get the public IP the DNS server sees
     dns_ip=$(dig @resolver1.opendns.com myip.opendns.com +short)
-    echo "DNS server sees IP: $dns_ip"
 
     # Check if dns_ip is empty
     if [ -z "$dns_ip" ]; then
-        echo "Error: Unable to retrieve DNS IP. DNS leak check failed."
+        echo "Warning: Unable to retrieve DNS IP. DNS leak check failed."
+        return
+    fi
+
+    if ! is_valid_ip "$dns_ip"; then
+        echo -en "${YLW}Warning: DNS leak check failed:${RES} $dns_ip"
         return
     fi
 
@@ -64,30 +102,49 @@ check_dns_leak() {
         echo "Warning: DNS Leak detected! DNS server sees a different IP ($dns_ip). Exiting"
         exit 0
     else
-        echo "No DNS leak detected. DNS server sees the VPN IP."
+        echo -en "\n${GRN}No DNS leak detected. DNS server sees IP: $dns_ip${RES}"
     fi
 }
 
 # Function to check for IPv6 leak
 check_ipv6_leak() {
-    ipv6=$(curl -6 -s ifconfig.me)
+    ipv6=$(curl -6 -s ifconfig.me) || true
     if [ -n "$ipv6" ]; then
-        echo "IPv6 Leak detected! Public IPv6 address: $ipv6. Exiting."
+        echo -en "${RED}IPv6 Leak detected! Public IPv6 address: $ipv6.${RES} Exiting."
 	exit 0
     else
-        echo "No IPv6 leak detected."
+        echo -en "\n${GRN}No IPv6 leak detected.${RES}"
     fi
 }
 
-echo "Startomg IP leak test..."
+countdown() {
+    local start=$WAIT
+    echo
+    for ((i=start; i>=0; i--)); do
+        printf "\r${GRY}Waiting for ${MGN}%02d ${GRY}seconds before the next check...${RES}" "$i"
+        sleep 1
+    done
+}
+
+
+
+echo -n "Starting IP leak test..."
+
+echo -en "\nFrequency: $WAIT seconds."
 
 # Check if VPN_IP is empty
 if [ -z "$VPN_IP" ]; then
-    echo "Error: VPN_IP is empty! Please set your VPN IP in the script."
+    echo -e "${YLW}Error: VPN_IP is empty! Please set your VPN IP in the script.${RES}"
     exit 1
 fi
 
-# Continuous check loop
+if ! is_valid_ip "$VPN_IP"; then
+    echo -e "${YLW}Invalid VPN IP EEEEEEEEE${RES}"
+    exit 1
+fi
+
+check_curl_installed
+
 while true; do
 
     check_ip_leak
@@ -96,9 +153,9 @@ while true; do
 
     check_ipv6_leak
 
-    echo "Waiting for $WAIT seconds before the next check..."
-    echo -n "=================================================="
-    sleep "$WAIT"
-    echo
+    countdown
 
 done
+
+
+
