@@ -25,7 +25,9 @@ gsettings set org.gnome.desktop.interface show-battery-percentage true
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'kitty.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'firefox-esr.desktop', 'firefox.desktop', 'google-chrome.desktop']"
 
 # set background color
-#gsettings set org.gnome.desktop.background primary-color '#023c88' # blue
+#gsettings set org.gnome.desktop.background primary-color '#023c88' # blue (default)
+gsettings set org.gnome.desktop.background primary-color '#000000' # black
+
 
 # enable over amplification
 gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
