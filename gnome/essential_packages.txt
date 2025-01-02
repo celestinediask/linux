@@ -1,0 +1,11 @@
+gnome-control-center
+obs-studio
+nautilus
+gnome-calculator
+gnome-characters
+mpv
+eog
+evince
+gnome-text-editor
+gnome-system-monitor
+gnome-disk-utility

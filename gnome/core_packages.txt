@@ -1,0 +1,3 @@
+gnome-session
+gdm
+gnome-console
