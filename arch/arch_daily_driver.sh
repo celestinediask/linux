@@ -5,17 +5,16 @@ set -e
 
 start_time=$(date +%s)
 
-
 cp bashrc ~/.bashrc
 
 sudo pacman -Syu
 sudo pacman -S --needed --noconfirm - < ../packages.txt
 
 # gnome setup
-# install gnome core packages
 sudo pacman -S --needed --noconfirm - < ../gnome/core_packages.txt
-sudo systemctl enable gdm
 sudo pacman -S --needed --noconfirm - < ../gnome/essential_packages.txt
+
+sudo systemctl enable gdm
 
 # setup browser
 sudo pacman -S firefox chromium
