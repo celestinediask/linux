@@ -2,9 +2,8 @@
 ## Minimal
 - Turn off wifi
 - Turn off bluetooth 
-- Switch to dark theme
 - Change Annoy sound terminal error sound
-- Mouse VV lag
+- Mouse lag
 
 ## Daily driver 
 - Show number for text editor 
