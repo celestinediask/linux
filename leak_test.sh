@@ -89,7 +89,7 @@ check_dns_leak() {
     fi
 
     if ! is_valid_ip "$dns_ip"; then
-        echo -en "${YLW}Warning: DNS leak check failed:${RES} $dns_ip"
+        echo -e "${YLW}Warning: DNS leak check failed:${RES} $dns_ip"
         return
     fi
 
