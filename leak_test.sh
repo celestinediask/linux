@@ -84,7 +84,7 @@ check_dns_leak() {
 
     # Check if dns_ip is empty
     if [ -z "$dns_ip" ]; then
-        echo "Warning: Unable to retrieve DNS IP. DNS leak check failed."
+        echo -n "Warning: Unable to retrieve DNS IP. DNS leak check failed."
         return
     fi
 
