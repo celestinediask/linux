@@ -1,10 +1,13 @@
 #! /bin/bash
+# virt-manager setup on archlinux
 
 set -e
 
-# virt-manager setup on archlinux
-sudo pacman -S virt-manager qemu libvirt dnsmasq
+sudo pacman -S --noconfirm virt-manager qemu-desktop libvirt dnsmasq
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 sudo virsh net-start default
-sudo usermod -aG libvirt $(whoami)
+sudo virsh net-autostart default
+
+# uncomment if you use root
+#sudo usermod -aG libvirt $(whoami)
