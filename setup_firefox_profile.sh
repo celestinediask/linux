@@ -1,8 +1,13 @@
 # setup firefox profile
 
-PROJECT_ROOT=$(realpath ..)
-TEMP_DIR=$PROJECT_ROOT/tmp
+TEMP_DIR="temp"
 CUR_DIR=$(pwd)
+
+# Check if Git is installed
+if ! command -v git &> /dev/null; then
+  echo "git is not installed. Skipping..."
+  exit 0
+fi
 
 if [ ! -d "$TEMP_DIR" ]; then
     mkdir -p "$TEMP_DIR"

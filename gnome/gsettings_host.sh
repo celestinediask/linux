@@ -19,7 +19,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
 # set favorite apps
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'kitty.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'firefox-esr.desktop', 'firefox.desktop', 'google-chrome.desktop']"
+#gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'kitty.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'firefox-esr.desktop', 'firefox.desktop', 'google-chrome.desktop']"
 
 # set background color
 #gsettings set org.gnome.desktop.background primary-color '#023c88' # blue (default)
@@ -33,7 +33,7 @@ gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true'
 gsettings set org.gnome.nautilus.icon-view captions "['none', 'size', 'none']"
 
 # set default browser
-xdg-settings set default-web-browser google-chrome.desktop
+#xdg-settings set default-web-browser google-chrome.desktop
 
 # disable gnome text editor session restore
 gsettings set org.gnome.TextEditor restore-session false
