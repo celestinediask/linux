@@ -1,3 +1,4 @@
+firefox-esr-*
 im-config
 ibus
 libreoffice*

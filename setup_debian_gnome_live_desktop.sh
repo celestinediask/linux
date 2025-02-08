@@ -6,12 +6,6 @@ sudo test || true
 
 start_time=$(date +%s)
 
-# Check if Git is installed
-if ! command -v git &> /dev/null; then
-  echo "git is not installed. git is required to run this script. Exiting."
-  exit 0
-fi
-
 bash gnome/gsettings_host.sh
 bash gnome/gnome_terminal_enable_bright_colors.sh
 bash debian/clean_repo.sh

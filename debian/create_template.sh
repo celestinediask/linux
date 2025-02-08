@@ -1,6 +1,6 @@
 # create new txt file in templates
 
-DIR="~/Templates"
+DIR=~/Templates
 
 # Check if the directory exists
 if [ ! -d "$DIR" ]; then
