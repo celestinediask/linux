@@ -1,7 +1,5 @@
 # To Do's
 ## Minimal
-- Turn off wifi
-- Turn off bluetooth 
 - Change Annoy sound terminal error sound
 - Mouse lag
 
