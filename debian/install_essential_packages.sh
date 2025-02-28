@@ -5,7 +5,7 @@ start_time=$(date +%s)
 
 sudo apt update
 
-sudo apt install -y gnome-characters gnome-font-viewer dbus-x11 wget curl gnome-calculator gnome-sound-recorder gnome-control-center nautilus mpv eog evince gnome-text-editor file-roller gnome-disk-utility gnome-system-monitor baobab fonts-mlym fonts-deva firefox-esr obs-studio
+sudo apt install -y --no-install-suggests --no-install-recommends fonts-noto-color-emoji gnome-characters gnome-font-viewer dbus-x11 wget curl gnome-calculator gnome-sound-recorder gnome-control-center nautilus mpv eog evince gnome-text-editor file-roller gnome-disk-utility gnome-system-monitor baobab fonts-mlym fonts-deva firefox-esr obs-studio
 
 end_time=$(date +%s)
 execution_time=$((end_time - start_time))
