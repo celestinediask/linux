@@ -34,6 +34,11 @@ sudo pacman -S --noconfirm firefox-dark-reader
 
 sudo pacman -S --noconfirm chromium
 
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd -
+
 end_time=$(date +%s)
 execution_time=$((end_time - start_time))
 echo "successfully configured arch as daily driver in $execution_time seconds."
