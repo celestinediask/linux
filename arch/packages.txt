@@ -1,0 +1,6 @@
+vim
+nano
+bash-completion
+tree
+gvfs-mtp
+mtpfs
