@@ -10,14 +10,13 @@ CURRENT_USER=$(whoami)
 
 sudo test || true
 
-# Check if gdm3 is installed
-if ! dpkg -l | grep -q gdm3; then
-    echo "gdm3 is not installed. Exiting."
-    exit 1
-fi
-
 # Set GDM configuration file
 GDM_CONFIG_FILE="/etc/gdm3/daemon.conf"
+
+if [ ! -f "$GDM_CONFIG_FILE" ]; then
+    echo "file: $GDM_CONFIG_FILE not found"
+    exit 0
+fi
 
 # Enable autologin for the current user
 sudo sed -i 's/# *\(AutomaticLoginEnable\).*/\1 = true/' $GDM_CONFIG_FILE

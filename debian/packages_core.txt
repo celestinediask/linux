@@ -1,0 +1,6 @@
+gnome-session
+gdm3
+gnome-console
+network-manager
+gnome-keyring
+wpasupplicant
