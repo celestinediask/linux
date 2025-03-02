@@ -11,7 +11,7 @@ packages=$(cat $packages_core; echo; cat $packages_essential)
 bash debian/clean_repo.sh
 sudo apt update
 sudo apt install -y --no-install-suggests --no-install-recommends $packages
-bash firefox/debloat_firefox.sh
+bash firefox_profile_setup.sh
 bash gnome/gsettings.sh
 bash debian/fix_wifi.sh
     
