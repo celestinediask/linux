@@ -12,7 +12,7 @@ bash debian/clean_repo.sh
 sudo apt update
 sudo apt install -y --no-install-suggests --no-install-recommends $packages
 bash firefox_profile_setup.sh
-bash gnome/gsettings.sh
+bash gnome/gsettings_host.sh
 bash debian/fix_wifi.sh
     
 end_time=$(date +%s)

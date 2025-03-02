@@ -2,6 +2,8 @@
 
 set -e
 
+sudo test || true
+
 file="/etc/apt/sources.list"
 
 # Check if backup file already exist.
