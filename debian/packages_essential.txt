@@ -16,7 +16,8 @@ file-roller
 gnome-disk-utility 
 gnome-system-monitor 
 baobab
-fonts-mlym 
 fonts-deva 
 firefox-esr 
 obs-studio
+gnome-clocks
+fonts-indic
