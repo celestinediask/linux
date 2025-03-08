@@ -18,6 +18,5 @@ gnome-system-monitor
 baobab
 fonts-deva 
 firefox-esr 
-obs-studio
 gnome-clocks
 fonts-indic
