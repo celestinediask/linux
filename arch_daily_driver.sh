@@ -26,13 +26,15 @@ sudo pacman -S bluez bluez-utils
 sudo systemctl start bluetooth
 sudo systemctl enable bluetooth
 
-# setup browser
+# setup firefox browser
 sudo pacman -S --noconfirm firefox
 # setup firefox profile
 sudo pacman -S --noconfirm firefox-ublock-origin
 sudo pacman -S --noconfirm firefox-dark-reader
 
+# setup chromium browser
 sudo pacman -S --noconfirm chromium
+xdg-mime default chromium.desktop x-scheme-handler/mailto
 
 git clone https://aur.archlinux.org/yay.git
 cd yay
