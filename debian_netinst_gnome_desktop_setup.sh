@@ -14,6 +14,15 @@ sudo apt install -y --no-install-suggests --no-install-recommends $packages
 bash firefox_profile_setup.sh
 bash gnome/gsettings_host.sh
 bash debian/fix_wifi.sh
+
+
+# dock setup
+sudo apt install gnome-shell-extension-dash-to-panel
+gnome-extensions list
+gnome-extensions enable dash-to-panel@jderose9.github.com
+# disable overview on startup
+
+# setup fonts
     
 end_time=$(date +%s)
 execution_time=$((end_time - start_time))
