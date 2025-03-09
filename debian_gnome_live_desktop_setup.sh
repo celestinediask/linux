@@ -9,14 +9,6 @@ bash gnome/gsettings_host.sh
 bash firefox/debloat_firefox.sh
 bash debian/debloat_debian_live.sh
 
-# dock setup
-sudo apt install gnome-shell-extension-dash-to-panel
-gnome-extensions list
-gnome-extensions enable dash-to-panel@jderose9.github.com
-# disable overview on startup
-
-# setup fonts
-
 end_time=$(date +%s)
 execution_time=$((end_time - start_time))
 echo "debian_live_debloat has been completed in $execution_time seconds."
