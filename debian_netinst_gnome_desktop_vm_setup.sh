@@ -12,7 +12,7 @@ exec > >(tee -a "logfile.log") 2>&1
 bash debian/clean_repo.sh
 
 sudo apt update && sudo apt install -y --no-install-suggests --no-install-recommends \
-  gnome-session gdm3 gnome-terminal spice-vdagent
+  gnome-session gdm3 gnome-terminal spice-vdagent firefox-esr
 
 bash gnome/gnome_terminal_enable_bright_colors.sh
 bash gnome/gdm3_enable_autologin.sh
